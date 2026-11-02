@@ -1,0 +1,73 @@
+:root {
+  /* Shared top-row height; sidebar, view bar and token pane headers align on it */
+  --app-header-h: 3rem;
+  --app-header-border: 1px solid var(--border-subtle);
+
+  /* Grayscale Palette */
+  --bg-canvas: #fafafb;
+  --bg-sidebar: #ececee;
+  --bg-sidebar-hover: #e2e2e5;
+  --bg-sidebar-active: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-surface-muted: #f4f4f6;
+  --bg-surface-elevated: #ffffff;
+  
+  --text-primary: #111113;
+  --text-secondary: #4a4a52;
+  --text-tertiary: #71717a;
+  --text-inverse: #ffffff;
+
+  --border-hairline: rgba(0, 0, 0, 0.07);
+  --border-subtle: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.22);
+
+  /* Pastel Highlights (Subtle Accents) */
+  --pastel-mint-bg: #dcfce7;
+  --pastel-mint-border: #bbf7d0;
+  --pastel-mint-fg: #14532d;
+  
+  --pastel-amber-bg: #fef3c7;
+  --pastel-amber-border: #fde68a;
+  --pastel-amber-fg: #78350f;
+  
+  --pastel-lavender-bg: #ede9fe;
+  --pastel-lavender-border: #ddd6fe;
+  --pastel-lavender-fg: #3730a3;
+  
+  --pastel-sky-bg: #e0f2fe;
+  --pastel-sky-border: #bae6fd;
+  --pastel-sky-fg: #075985;
+  
+  --pastel-rose-bg: #ffe4e6;
+  --pastel-rose-border: #fecdd3;
+  --pastel-rose-fg: #881337;
+
+  /* Typography */
+  --font-display: Inter, sans-serif;
+  --font-body: Inter, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+code, kbd, samp, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Ensure focus visibility for accessibility without ugly default halos */
+:focus-visible {
+  outline: 2px solid #111113;
+  outline-offset: 2px;
+}

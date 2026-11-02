@@ -1,0 +1,129 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .button {
+    --_h: var(--fluent-control-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--fluent-space-2);
+    min-inline-size: var(--_h);
+    block-size: var(--_h);
+    padding-inline: var(--fluent-space-4);
+    border: var(--fluent-stroke) solid var(--fluent-border-strong);
+    border-radius: var(--fluent-radius-button);
+    color: var(--fluent-text);
+    background: var(--fluent-surface);
+    font: var(--fluent-label-weight) var(--fluent-font-size-300) / 1.25 var(--fluent-font);
+    letter-spacing: var(--fluent-label-tracking);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      background-color var(--fluent-duration-fast) var(--fluent-ease),
+      border-color var(--fluent-duration-fast) var(--fluent-ease);
+  }
+
+  .button[data-size='small'] {
+    --_h: var(--fluent-control-sm);
+    padding-inline: var(--fluent-space-3);
+    border-radius: var(--fluent-radius-button-sm);
+    font-size: var(--fluent-font-size-200);
+  }
+
+  .button[data-size='large'] {
+    --_h: var(--fluent-control-lg);
+  }
+
+  .button[data-appearance='primary'] {
+    color: var(--fluent-accent-contrast);
+    background: var(--fluent-accent);
+    border-color: transparent;
+  }
+
+  .button[data-appearance='tonal'] {
+    background: var(--fluent-accent-soft);
+    border-color: transparent;
+  }
+
+  .button[data-appearance='subtle'] {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .button[data-appearance='outline'] {
+    background: transparent;
+  }
+
+  .button[data-appearance='danger'] {
+    background: transparent;
+    border-color: var(--fluent-danger);
+    color: var(--fluent-danger-ink);
+  }
+
+  .button[data-icon-only] {
+    inline-size: var(--_h);
+    padding-inline: 0;
+  }
+
+  .button svg {
+    inline-size: 1.25em;
+    block-size: 1.25em;
+  }
+}
+
+@layer components.fluent.states {
+  .button:hover:not([data-disabled]):not([data-disabled-focusable]) {
+    background: var(--fluent-surface-hover);
+  }
+
+  .button[data-appearance='tonal']:hover:not([data-disabled]):not([data-disabled-focusable]) {
+    background: color-mix(in oklch, var(--fluent-text) 8%, var(--fluent-accent-soft));
+    box-shadow: var(--fluent-shadow-low);
+  }
+
+  .button[data-appearance='tonal']:active:not([data-disabled]):not([data-disabled-focusable]) {
+    background: color-mix(in oklch, var(--fluent-text) 10%, var(--fluent-accent-soft));
+  }
+
+  .button:active:not([data-disabled]):not([data-disabled-focusable]) {
+    background: var(--fluent-surface-pressed);
+  }
+
+  .button[data-appearance='primary']:hover:not([data-disabled]):not([data-disabled-focusable]) {
+    background: var(--fluent-accent-hover);
+  }
+
+  .button[data-appearance='primary']:active:not([data-disabled]):not([data-disabled-focusable]) {
+    background: var(--fluent-accent-pressed);
+  }
+
+  .button[data-appearance='subtle']:hover:not([data-disabled]):not([data-disabled-focusable]),
+  .button[data-appearance='outline']:hover:not([data-disabled]):not([data-disabled-focusable]) {
+    background: var(--fluent-accent-soft);
+  }
+
+  .button[data-appearance='danger']:hover:not([data-disabled]):not([data-disabled-focusable]) {
+    background: color-mix(in oklch, var(--fluent-danger) 12%, transparent);
+  }
+
+  .button:focus-visible {
+    outline: 2px solid var(--fluent-focus);
+    outline-offset: 2px;
+  }
+
+  .button[data-disabled],
+  .button[data-disabled-focusable],
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    .button:focus-visible {
+      outline-color: Highlight;
+    }
+  }
+}

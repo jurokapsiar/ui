@@ -1,0 +1,147 @@
+/*
+ * Fluent headless design system: layer order, reset and tokens.
+ *
+ * The fluent layers are nested inside Tailwind's `components` layer, so the order is
+ *   theme < base < components (… < primitives, the Base UI layer) < utilities
+ * with   components.fluent.reset < tokens < components < states < overrides   inside it.
+ * Tailwind preflight (base) therefore loses to every fluent rule, and Tailwind utilities
+ * (used by the shared demo frame) still beat them. Nothing in this system is unlayered.
+ * Every CSS file in this folder repeats the first two statements because stylesheet
+ * evaluation order is not guaranteed and the first declaration of a layer fixes its rank.
+ */
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.reset {
+  [data-fluent-root],
+  [data-fluent-root] *,
+  [data-fluent-root] *::before,
+  [data-fluent-root] *::after {
+    box-sizing: border-box;
+  }
+
+  [data-fluent-root] h1,
+  [data-fluent-root] h2,
+  [data-fluent-root] h3,
+  [data-fluent-root] p,
+  [data-fluent-root] dialog {
+    margin: 0;
+  }
+
+  [data-fluent-root] ul,
+  [data-fluent-root] ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  [data-fluent-root] button,
+  [data-fluent-root] input,
+  [data-fluent-root] select {
+    font: inherit;
+    color: inherit;
+  }
+
+  [data-fluent-root] svg {
+    flex-shrink: 0;
+  }
+}
+
+/* Tokens live on :root so top-layer popovers and dialogs, which can render outside the view, still resolve them. */
+@layer components.fluent.tokens {
+  :root {
+    /* colour, from the shared ThemeTokens variables set by DesignSystemContext */
+    --fluent-bg: var(--color-neutral-bg, #ffffff);
+    --fluent-surface: var(--color-neutral-surface, #f4f4f6);
+    --fluent-surface-hover: var(--color-neutral-surface-hover, #e5e5ea);
+    --fluent-surface-pressed: color-mix(in oklch, var(--fluent-text) 12%, var(--fluent-surface-hover));
+    --fluent-border: var(--color-neutral-border, rgba(0, 0, 0, 0.1));
+    --fluent-border-strong: var(--color-neutral-border-strong, rgba(0, 0, 0, 0.4));
+    --fluent-text: var(--color-neutral-text, #111113);
+    --fluent-text-muted: var(--color-neutral-text-muted, #71717a);
+    --fluent-text-disabled: color-mix(in oklch, var(--fluent-text-muted) 55%, var(--fluent-bg));
+    --fluent-accent: var(--color-brand-primary, #2563eb);
+    --fluent-accent-hover: var(--color-brand-primary-hover, #1d4ed8);
+    --fluent-accent-pressed: color-mix(in oklch, black 14%, var(--fluent-accent-hover));
+    --fluent-accent-contrast: var(--color-on-primary, #ffffff);
+    /* brand pulled toward the text colour so it stays legible as ink on every preset */
+    --fluent-accent-ink: color-mix(in oklch, var(--fluent-accent) 80%, var(--fluent-text));
+    --fluent-accent-soft: var(--color-brand-tint, #eff6ff);
+    --fluent-accent-border: var(--color-brand-tint-border, #bfdbfe);
+    --fluent-focus: var(--color-focus-ring, var(--fluent-accent-ink));
+    --fluent-danger: var(--color-danger, #dc2626);
+    --fluent-danger-ink: color-mix(in oklch, var(--fluent-danger) 60%, var(--fluent-text));
+    --fluent-success: var(--color-success, #16a34a);
+    --fluent-success-ink: color-mix(in oklch, var(--fluent-success) 60%, var(--fluent-text));
+    --fluent-overlay: color-mix(in oklch, black 45%, transparent);
+
+    /* geometry, capped so a pill radius setting never turns panels into blobs */
+    --fluent-radius-control: min(var(--radius-base, 6px), 24px);
+    --fluent-radius-control-sm: min(var(--radius-sm, 4px), 16px);
+    --fluent-radius-surface: min(var(--radius-lg, 8px), 28px);
+    --fluent-radius-pill: 9999px;
+    --fluent-radius-button: var(--radius-control, var(--fluent-radius-control));
+    --fluent-radius-button-sm: var(--radius-control, var(--fluent-radius-control-sm));
+    --fluent-radius-field: var(--radius-field, var(--fluent-radius-control));
+    --fluent-radius-chip: var(--radius-chip, var(--fluent-radius-pill));
+    --fluent-stroke: var(--border-width, 1px);
+
+    /* spacing scale follows the spacing base token */
+    --fluent-space-1: var(--spacing-base, 4px);
+    --fluent-space-1-5: calc(var(--spacing-base, 4px) * 1.5);
+    --fluent-space-2: calc(var(--spacing-base, 4px) * 2);
+    --fluent-space-2-5: calc(var(--spacing-base, 4px) * 2.5);
+    --fluent-space-3: calc(var(--spacing-base, 4px) * 3);
+    --fluent-space-4: calc(var(--spacing-base, 4px) * 4);
+    --fluent-space-6: calc(var(--spacing-base, 4px) * 6);
+
+    /* control heights; the large step follows the touch-target setting */
+    --fluent-control-sm: 28px;
+    --fluent-control-md: 36px;
+    --fluent-control-lg: max(44px, var(--touch-target-min, 44px));
+
+    --fluent-font: var(--font-family-body, system-ui, sans-serif);
+    --fluent-font-mono: var(--font-family-mono, ui-monospace, monospace);
+    --fluent-font-size-200: 0.75rem;
+    --fluent-font-size-300: 0.875rem;
+    --fluent-font-size-400: 1rem;
+    --fluent-font-size-500: 1.25rem;
+
+    --fluent-shadow-low: var(--shadow-elevation-low, 0 1px 2px rgba(0, 0, 0, 0.12));
+    --fluent-shadow-high: var(--shadow-elevation-high, 0 8px 24px rgba(0, 0, 0, 0.2));
+
+    --fluent-label-weight: var(--font-weight-label, 600);
+    --fluent-label-tracking: var(--letter-spacing-label, normal);
+
+    --fluent-ease: var(--motion-easing, cubic-bezier(0.33, 0, 0.67, 1));
+    --fluent-duration-fast: var(--motion-duration-fast, 100ms);
+    --fluent-duration: var(--motion-duration, 200ms);
+  }
+
+  /* Hazard yellow needs a much heavier pull toward the text colour to read as ink */
+  :root[data-ds-preset='brutalist'] {
+    --fluent-accent-ink: color-mix(in oklch, var(--fluent-accent) 50%, var(--fluent-text));
+  }
+
+  /* Material pressed state layer is 10% of the on-colour, lighter than the generic darkening */
+  :root[data-ds-preset='substance'] {
+    --fluent-accent-ink: var(--fluent-accent);
+    --fluent-accent-pressed: color-mix(in oklch, var(--fluent-accent-contrast) 10%, var(--fluent-accent));
+    --fluent-surface-pressed: color-mix(in oklch, var(--fluent-text) 10%, var(--fluent-surface));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --fluent-duration-fast: 0ms;
+      --fluent-duration: 0ms;
+    }
+  }
+}
+
+/* Material 3 focus ring is 3px; every other preset keeps the 2px width set by the components */
+@layer components.fluent.states {
+  :root[data-ds-preset='substance'] :focus-visible,
+  :root[data-ds-preset='substance'] .input:focus-within {
+    outline-width: 3px;
+  }
+}

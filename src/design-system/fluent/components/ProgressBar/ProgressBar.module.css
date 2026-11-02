@@ -1,0 +1,67 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .progress {
+    --_fill: var(--fluent-accent);
+    position: relative;
+    inline-size: 100%;
+    block-size: 8px;
+    overflow: hidden;
+    border-radius: var(--fluent-radius-pill);
+    background: var(--fluent-surface-hover);
+  }
+
+  .progress[data-tone='success'] {
+    --_fill: var(--fluent-success);
+  }
+
+  .fill {
+    block-size: 100%;
+    border-radius: inherit;
+    background: var(--_fill);
+    transition: inline-size var(--fluent-duration) var(--fluent-ease);
+  }
+
+  /* No value attribute means indeterminate: slide a fixed-width bar along the track */
+  .progress:not([aria-valuenow]) .fill {
+    position: absolute;
+    inline-size: 40%;
+    transition: none;
+    animation: fluent-progress-slide 1.6s var(--fluent-ease) infinite;
+  }
+
+  @keyframes fluent-progress-slide {
+    from {
+      inset-inline-start: -40%;
+    }
+
+    to {
+      inset-inline-start: 100%;
+    }
+  }
+}
+
+@layer components.fluent.states {
+  @media (prefers-reduced-motion: reduce) {
+    .fill,
+    .progress:not([aria-valuenow]) .fill {
+      animation: none;
+      transition: none;
+    }
+
+    .progress:not([aria-valuenow]) .fill {
+      inset-inline-start: 30%;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .progress {
+      border: 1px solid CanvasText;
+    }
+
+    .fill {
+      background: Highlight;
+    }
+  }
+}

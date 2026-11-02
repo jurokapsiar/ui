@@ -1,0 +1,92 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .slider {
+    --_h: var(--fluent-control-md);
+    position: relative;
+    display: inline-grid;
+    align-items: center;
+    inline-size: 100%;
+    min-block-size: var(--_h);
+    touch-action: none;
+  }
+
+  .slider[data-size='large'] {
+    --_h: var(--fluent-control-lg);
+  }
+
+  .slider[data-size='small'] {
+    --_h: var(--fluent-control-sm);
+  }
+
+  /* The native range input spans the control invisibly so pointer and keyboard input stay native */
+  .input {
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .rail {
+    position: relative;
+    inline-size: 100%;
+    block-size: 4px;
+    border-radius: var(--fluent-radius-pill);
+    background: var(--fluent-surface-hover);
+    pointer-events: none;
+  }
+
+  .rail::before {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    inline-size: var(--fui-Slider--progress, 0%);
+    border-radius: inherit;
+    background: var(--fluent-accent);
+  }
+
+  .thumb {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: var(--fui-Slider--progress, 0%);
+    inline-size: 20px;
+    block-size: 20px;
+    translate: -50% -50%;
+    border: 2px solid var(--fluent-accent);
+    border-radius: 50%;
+    background: var(--fluent-bg);
+    box-shadow: var(--fluent-shadow-low);
+    pointer-events: none;
+  }
+
+  .slider:dir(rtl) .thumb {
+    translate: 50% -50%;
+  }
+}
+
+@layer components.fluent.states {
+  .slider:has(.input:focus-visible) .thumb {
+    outline: 2px solid var(--fluent-focus);
+    outline-offset: 3px;
+  }
+
+  .slider[data-disabled] {
+    opacity: 0.5;
+  }
+
+  .slider[data-disabled] .input {
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    .thumb {
+      border-color: CanvasText;
+    }
+  }
+}

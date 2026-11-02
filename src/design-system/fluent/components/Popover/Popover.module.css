@@ -1,0 +1,33 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .surface {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    min-inline-size: 220px;
+    max-inline-size: min(400px, calc(100vw - 16px));
+    padding: var(--fluent-space-4);
+    overflow: visible;
+    border: var(--fluent-stroke) solid var(--fluent-border);
+    border-radius: var(--fluent-radius-surface);
+    background: var(--fluent-bg);
+    color: var(--fluent-text);
+    box-shadow: var(--fluent-shadow-high);
+    font-family: var(--fluent-font);
+    font-size: var(--fluent-font-size-300);
+  }
+
+  .surface::backdrop {
+    background: transparent;
+  }
+}
+
+@layer components.fluent.states {
+  @media (forced-colors: active) {
+    .surface {
+      border-color: CanvasText;
+    }
+  }
+}

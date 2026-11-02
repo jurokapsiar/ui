@@ -1,0 +1,15 @@
+.positioner {
+  z-index: 100;
+}
+
+.popup {
+  box-sizing: border-box;
+  max-inline-size: 18rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background-color: var(--text-primary, #111113);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  line-height: 1.3;
+}

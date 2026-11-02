@@ -1,0 +1,76 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  /* Resets the UA [popover] box so the floating position from the headless package applies */
+  .popover {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    min-inline-size: 200px;
+    max-inline-size: min(360px, calc(100vw - 16px));
+    padding: var(--fluent-space-1-5);
+    overflow: auto;
+    border: var(--fluent-stroke) solid var(--fluent-border);
+    border-radius: var(--fluent-radius-surface);
+    background: var(--fluent-bg);
+    color: var(--fluent-text);
+    box-shadow: var(--fluent-shadow-high);
+    font-family: var(--fluent-font);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    outline: none;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--fluent-space-2);
+    inline-size: 100%;
+    min-block-size: var(--fluent-control-sm);
+    padding: var(--fluent-space-1) var(--fluent-space-3);
+    border-radius: var(--fluent-radius-control-sm);
+    color: var(--fluent-text);
+    font-size: var(--fluent-font-size-300);
+    text-align: start;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .divider {
+    block-size: var(--fluent-stroke);
+    margin-block: var(--fluent-space-1);
+    margin-inline: var(--fluent-space-2);
+    background: var(--fluent-border);
+  }
+}
+
+@layer components.fluent.states {
+  .item:hover,
+  .item:focus-visible {
+    background: var(--fluent-surface-hover);
+  }
+
+  .item:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--fluent-focus);
+  }
+
+  .item[aria-disabled='true'],
+  .item[data-disabled] {
+    color: var(--fluent-text-disabled);
+    cursor: not-allowed;
+  }
+
+  @media (forced-colors: active) {
+    .popover {
+      border-color: CanvasText;
+    }
+
+    .item:focus-visible {
+      outline: 2px solid Highlight;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .list {
+    --_h: var(--fluent-control-md);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: var(--fluent-space-1);
+  }
+
+  .list[data-size='small'] {
+    --_h: var(--fluent-control-sm);
+  }
+
+  .list[data-size='large'] {
+    --_h: var(--fluent-control-lg);
+  }
+
+  .list[data-appearance='underline'] {
+    border-block-end: var(--fluent-stroke) solid var(--fluent-border);
+  }
+
+  .list[data-appearance='segmented'] {
+    inline-size: fit-content;
+    max-inline-size: 100%;
+    padding: 2px;
+    border-radius: var(--fluent-radius-control);
+    background: var(--fluent-surface);
+  }
+
+  .tab {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--fluent-space-2);
+    min-block-size: var(--_h);
+    padding-inline: var(--fluent-space-4);
+    color: var(--fluent-text-muted);
+    font: 600 var(--fluent-font-size-300) / 1.25 var(--fluent-font);
+    cursor: pointer;
+  }
+
+  .list[data-appearance='segmented'] .tab {
+    border-radius: var(--fluent-radius-control-sm);
+  }
+
+  .list[data-appearance='underline'] .tab::after {
+    content: '';
+    position: absolute;
+    inset-inline: var(--fluent-space-2);
+    inset-block-end: -1px;
+    block-size: 2px;
+    border-radius: 1px;
+    background: transparent;
+  }
+}
+
+@layer components.fluent.states {
+  .tab:hover:not([data-disabled]) {
+    color: var(--fluent-text);
+  }
+
+  .tab[data-selected] {
+    color: var(--fluent-text);
+  }
+
+  .list[data-appearance='underline'] .tab[data-selected]::after {
+    background: var(--fluent-accent);
+  }
+
+  .list[data-appearance='segmented'] .tab[data-selected] {
+    background: var(--fluent-bg);
+    box-shadow: var(--fluent-shadow-low);
+  }
+
+  .tab:focus-visible {
+    outline: 2px solid var(--fluent-focus);
+    outline-offset: -2px;
+  }
+
+  .tab[data-disabled] {
+    color: var(--fluent-text-disabled);
+    cursor: not-allowed;
+  }
+}

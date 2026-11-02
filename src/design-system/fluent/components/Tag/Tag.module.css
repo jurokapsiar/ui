@@ -1,0 +1,89 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fluent-space-2);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--fluent-space-1-5);
+    min-block-size: var(--fluent-control-sm);
+    padding-inline: var(--fluent-space-3);
+    border: var(--fluent-stroke) solid var(--fluent-border-strong);
+    border-radius: var(--fluent-radius-chip);
+    background: var(--fluent-bg);
+    color: var(--fluent-text);
+    font-size: var(--fluent-font-size-200);
+    font-weight: var(--fluent-label-weight);
+    letter-spacing: var(--fluent-label-tracking);
+  }
+
+  /* The primary action fills the tag so the whole chip is the hit area */
+  .primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--fluent-space-1-5);
+    min-block-size: var(--fluent-control-sm);
+    margin-inline: calc(var(--fluent-space-3) * -1);
+    padding-inline: var(--fluent-space-3);
+    border-radius: inherit;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .tag > button:not(.primary) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 24px;
+    min-block-size: 24px;
+    margin-inline-end: calc(var(--fluent-space-2) * -1);
+    border-radius: 50%;
+    color: var(--fluent-text-muted);
+    cursor: pointer;
+  }
+}
+
+@layer components.fluent.states {
+  .tag:hover:not([data-disabled]) {
+    background: var(--fluent-surface-hover);
+  }
+
+  .tag[data-selected] {
+    border-color: var(--fluent-accent);
+    background: var(--fluent-accent-soft);
+    color: var(--fluent-accent-ink);
+  }
+
+  .primary:focus-visible,
+  .tag > button:focus-visible {
+    outline: 2px solid var(--fluent-focus);
+    outline-offset: 2px;
+  }
+
+  /* Material 3 filter chip: 14px label, selected chip is a flat secondary container */
+  :root[data-ds-preset='substance'] .tag {
+    font-size: var(--fluent-font-size-300);
+  }
+
+  :root[data-ds-preset='substance'] .tag[data-selected] {
+    border-color: var(--fluent-accent-border);
+    color: var(--fluent-text);
+  }
+
+  .tag[data-disabled] {
+    color: var(--fluent-text-disabled);
+    border-color: var(--fluent-border);
+    cursor: not-allowed;
+  }
+
+  .tag[data-disabled] .primary {
+    cursor: not-allowed;
+  }
+}

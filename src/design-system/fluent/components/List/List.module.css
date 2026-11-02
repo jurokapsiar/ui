@@ -1,0 +1,95 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .list {
+    display: flex;
+    flex-direction: column;
+    inline-size: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden;
+    border: var(--fluent-stroke) solid var(--fluent-border);
+    border-radius: var(--fluent-radius-surface);
+    background: var(--fluent-bg);
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--fluent-space-3);
+    min-block-size: var(--fluent-control-lg);
+    padding: var(--fluent-space-2) var(--fluent-space-3);
+    color: var(--fluent-text);
+  }
+
+  .item + .item {
+    border-block-start: var(--fluent-stroke) solid var(--fluent-border);
+  }
+
+  .icon {
+    display: inline-flex;
+    color: var(--fluent-text-muted);
+  }
+
+  .text {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-inline-size: 0;
+  }
+
+  .headline {
+    font-size: var(--fluent-font-size-300);
+    font-weight: 600;
+  }
+
+  .support {
+    color: var(--fluent-text-muted);
+    font-size: var(--fluent-font-size-200);
+  }
+
+  .meta {
+    color: var(--fluent-text-muted);
+    font-size: var(--fluent-font-size-200);
+    white-space: nowrap;
+  }
+}
+
+@layer components.fluent.states {
+  .item[data-selectable] {
+    cursor: pointer;
+  }
+
+  .item[data-selectable]:hover {
+    background: var(--fluent-surface-hover);
+  }
+
+  .item[data-selected] {
+    background: var(--fluent-accent-soft);
+    box-shadow: inset 3px 0 0 var(--fluent-accent);
+  }
+
+  /* Material 3 list: a selected row is a rounded secondary container, not a side bar */
+  :root[data-ds-preset='substance'] .list {
+    border-radius: var(--fluent-radius-control);
+  }
+
+  :root[data-ds-preset='substance'] .item[data-selected] {
+    box-shadow: none;
+    border-radius: var(--fluent-radius-pill);
+  }
+
+  .item:focus-visible {
+    outline: 2px solid var(--fluent-focus);
+    outline-offset: -2px;
+  }
+
+  @media (forced-colors: active) {
+    .item[data-selected] {
+      outline: 2px solid Highlight;
+      outline-offset: -2px;
+    }
+  }
+}

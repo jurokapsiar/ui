@@ -1,0 +1,134 @@
+@layer theme, base, components, utilities;
+@layer components.fluent.reset, components.fluent.tokens, components.fluent.components, components.fluent.states, components.fluent.overrides;
+
+@layer components.fluent.components {
+  .dropdown {
+    --_h: var(--fluent-control-md);
+    position: relative;
+    display: inline-flex;
+    inline-size: 100%;
+  }
+
+  .dropdown[data-size='small'] {
+    --_h: var(--fluent-control-sm);
+  }
+
+  .dropdown[data-size='large'] {
+    --_h: var(--fluent-control-lg);
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--fluent-space-2);
+    inline-size: 100%;
+    min-block-size: var(--_h);
+    padding-inline: var(--fluent-space-3);
+    border: var(--fluent-stroke) solid var(--fluent-border-strong);
+    border-radius: var(--fluent-radius-field);
+    background: var(--fluent-bg);
+    color: var(--fluent-text);
+    font: inherit;
+    font-size: var(--fluent-font-size-300);
+    text-align: start;
+    cursor: pointer;
+  }
+
+  .dropdown[data-placeholder] .button {
+    color: var(--fluent-text-muted);
+  }
+
+  /* The expand icon is a sibling span after the button, so it overlays the button's end edge */
+  .dropdown > span {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: var(--fluent-space-3);
+    display: inline-flex;
+    align-items: center;
+    pointer-events: none;
+    color: var(--fluent-text-muted);
+  }
+
+  .listbox {
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    min-inline-size: 220px;
+    max-inline-size: min(360px, calc(100vw - 16px));
+    max-block-size: 320px;
+    padding: var(--fluent-space-1-5);
+    overflow: auto;
+    border: var(--fluent-stroke) solid var(--fluent-border);
+    border-radius: var(--fluent-radius-surface);
+    background: var(--fluent-bg);
+    color: var(--fluent-text);
+    box-shadow: var(--fluent-shadow-high);
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: var(--fluent-space-2);
+    min-block-size: var(--fluent-control-sm);
+    padding: var(--fluent-space-1) var(--fluent-space-3);
+    border-radius: var(--fluent-radius-control-sm);
+    font-size: var(--fluent-font-size-300);
+    cursor: pointer;
+  }
+
+  /* Check mark slot is always laid out so labels stay aligned; it only shows for the chosen option */
+  .option > span {
+    display: inline-flex;
+    inline-size: 16px;
+    color: transparent;
+  }
+}
+
+@layer components.fluent.states {
+  .button:hover:not(:disabled) {
+    border-color: var(--fluent-text);
+  }
+
+  .button:focus-visible {
+    outline: 2px solid var(--fluent-focus);
+    outline-offset: 2px;
+  }
+
+  .dropdown[data-disabled] .button {
+    background: var(--fluent-surface);
+    color: var(--fluent-text-disabled);
+    cursor: not-allowed;
+  }
+
+  .dropdown[data-invalid] .button {
+    border-color: var(--fluent-danger-ink);
+  }
+
+  .option:hover,
+  .option[data-active],
+  .option[aria-selected='true'][data-selected] {
+    background: var(--fluent-surface-hover);
+  }
+
+  .option[data-selected] > span {
+    color: var(--fluent-accent-ink);
+  }
+
+  .option[data-disabled] {
+    color: var(--fluent-text-disabled);
+    cursor: not-allowed;
+  }
+
+  .listbox:focus-visible {
+    outline: 2px solid var(--fluent-focus);
+    outline-offset: 2px;
+  }
+
+  @media (forced-colors: active) {
+    .button,
+    .listbox {
+      border-color: CanvasText;
+    }
+  }
+}
