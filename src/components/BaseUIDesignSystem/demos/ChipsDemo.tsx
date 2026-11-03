@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Toggle } from '@base-ui-components/react/toggle';
-import { ToggleGroup } from '@base-ui-components/react/toggle-group';
+import { ChipCheck, ChipInput, ChipRemove, Toggle, ToggleGroup } from '../../../design-system/base';
 import { Check, X } from '../../Icons/phosphor';
 import { DemoCard, DemoFrame } from './DemoFrame';
-import styles from './BaseUIDemos.module.css';
 
 const FILTERS = ['OKLCH', 'Cascade layers', 'APCA', 'Touch targets'];
 
@@ -26,16 +24,15 @@ export const ChipsDemo: React.FC = () => {
           multiple
           value={filters}
           onValueChange={(v) => setFilters(v as string[])}
-          className={styles.chipGroup}
           aria-label="Filter by topic"
         >
           {FILTERS.map((name) => (
-            <Toggle key={name} value={name} className={styles.chip}>
-              <Check size={14} weight="bold" className={styles.chipCheck} aria-hidden="true" />
+            <Toggle key={name} value={name}>
+              <ChipCheck><Check size={14} weight="bold" aria-hidden="true" /></ChipCheck>
               {name}
             </Toggle>
           ))}
-          <Toggle value="Archived" className={styles.chip} disabled>
+          <Toggle value="Archived" disabled>
             Archived
           </Toggle>
         </ToggleGroup>
@@ -45,19 +42,18 @@ export const ChipsDemo: React.FC = () => {
       </DemoCard>
 
       <DemoCard title="Input chips" subtitle="Each chip has a remove button with an accessible name" column>
-        <div className={styles.chipGroup} role="list" aria-label="Recipients">
+        <div className="flex flex-wrap gap-2" role="list" aria-label="Recipients">
           {inputs.map((email) => (
-            <span key={email} className={styles.chipInput} role="listitem">
+            <ChipInput key={email} role="listitem">
               {email}
-              <button
+              <ChipRemove
                 type="button"
-                className={styles.chipRemove}
                 aria-label={`Remove ${email}`}
                 onClick={() => setInputs((list) => list.filter((e) => e !== email))}
               >
                 <X size={14} weight="bold" aria-hidden="true" />
-              </button>
-            </span>
+              </ChipRemove>
+            </ChipInput>
           ))}
         </div>
         {inputs.length === 0 && (

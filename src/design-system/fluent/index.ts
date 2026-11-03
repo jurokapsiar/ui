@@ -13,5 +13,7 @@ export * from './components/Tag';
 export * from './components/TabList';
 export * from './components/ToggleButton';
 export * from './components/Tooltip';
+export { FluentProvider } from './FluentProvider';
+export type { FluentProviderProps } from './FluentProvider';
 export { FluentSizeContext, controlSizeFromTouchTarget, useFluentSize } from './size';
 export type { FluentControlSize } from './size';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Checkbox } from '@base-ui-components/react/checkbox';
+import { Checkbox, CheckboxCard, CheckboxLabel } from '../../../design-system/base';
 import { Check, Minus } from '../../Icons/phosphor';
 import styles from './BaseUIDemos.module.css';
 
@@ -52,21 +52,20 @@ export const CheckboxDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <label className={styles.checkboxLabel}>
+            <CheckboxLabel>
               <Checkbox.Root
                 checked={checked1}
                 onCheckedChange={setChecked1}
-                className={styles.checkboxRoot}
                 aria-label="Enforce OKLCH token uniformity"
               >
-                <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <Checkbox.Indicator>
                   <Check size={12} weight="bold" aria-hidden="true" />
                 </Checkbox.Indicator>
               </Checkbox.Root>
               <span className="text-sm font-medium text-[var(--color-neutral-text,#111113)]">
                 Enforce OKLCH token uniformity
               </span>
-            </label>
+            </CheckboxLabel>
           </div>
         </section>
 
@@ -81,15 +80,14 @@ export const CheckboxDemo: React.FC = () => {
           <div className={styles.previewArea}>
             <div className="flex flex-col gap-2 w-full max-w-xs">
               {/* Parent Checkbox */}
-              <label className={styles.checkboxLabel}>
+              <CheckboxLabel>
                 <Checkbox.Root
                   checked={parentState === true}
                   indeterminate={parentState === 'indeterminate'}
                   onCheckedChange={handleParentChange}
-                  className={styles.checkboxRoot}
                   aria-label="Select all quality checks"
                 >
-                  <Checkbox.Indicator className={styles.checkboxIndicator}>
+                  <Checkbox.Indicator>
                     {parentState === 'indeterminate' ? (
                       <Minus size={10} weight="bold" aria-hidden="true" />
                     ) : (
@@ -100,51 +98,48 @@ export const CheckboxDemo: React.FC = () => {
                 <span className="text-sm font-bold text-[var(--color-neutral-text,#111113)]">
                   Select all quality checks
                 </span>
-              </label>
+              </CheckboxLabel>
 
               {/* Children Checkboxes */}
               <div className="flex flex-col gap-1 ps-6">
-                <label className="flex items-center gap-2 cursor-pointer text-xs text-[var(--color-neutral-text,#111113)]">
+                  <CheckboxLabel className="text-xs text-[var(--color-neutral-text,#111113)]">
                   <Checkbox.Root
                     checked={items.apca}
                     onCheckedChange={(val) => setItems((p) => ({ ...p, apca: val === true }))}
-                    className={styles.checkboxRoot}
                     aria-label="APCA contrast verification"
                   >
-                    <Checkbox.Indicator className={styles.checkboxIndicator}>
+                    <Checkbox.Indicator>
                       <Check size={12} weight="bold" aria-hidden="true" />
                     </Checkbox.Indicator>
                   </Checkbox.Root>
                   <span>APCA contrast verification</span>
-                </label>
+                  </CheckboxLabel>
 
-                <label className="flex items-center gap-2 cursor-pointer text-xs text-[var(--color-neutral-text,#111113)]">
+                <CheckboxLabel className="text-xs text-[var(--color-neutral-text,#111113)]">
                   <Checkbox.Root
                     checked={items.layers}
                     onCheckedChange={(val) => setItems((p) => ({ ...p, layers: val === true }))}
-                    className={styles.checkboxRoot}
                     aria-label="Cascade layer ordering"
                   >
-                    <Checkbox.Indicator className={styles.checkboxIndicator}>
+                    <Checkbox.Indicator>
                       <Check size={12} weight="bold" aria-hidden="true" />
                     </Checkbox.Indicator>
                   </Checkbox.Root>
                   <span>Cascade layer ordering</span>
-                </label>
+                </CheckboxLabel>
 
-                <label className="flex items-center gap-2 cursor-pointer text-xs text-[var(--color-neutral-text,#111113)]">
+                <CheckboxLabel className="text-xs text-[var(--color-neutral-text,#111113)]">
                   <Checkbox.Root
                     checked={items.zeroPills}
                     onCheckedChange={(val) => setItems((p) => ({ ...p, zeroPills: val === true }))}
-                    className={styles.checkboxRoot}
                     aria-label="Zero-pill metadata filter"
                   >
-                    <Checkbox.Indicator className={styles.checkboxIndicator}>
+                    <Checkbox.Indicator>
                       <Check size={12} weight="bold" aria-hidden="true" />
                     </Checkbox.Indicator>
                   </Checkbox.Root>
                   <span>Zero-pill metadata filter</span>
-                </label>
+                </CheckboxLabel>
               </div>
             </div>
           </div>
@@ -159,14 +154,13 @@ export const CheckboxDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <label className={`${styles.checkboxCard} w-full max-w-sm`}>
+            <CheckboxCard className="w-full max-w-sm">
               <Checkbox.Root
                 checked={compact}
                 onCheckedChange={setCompact}
-                className={styles.checkboxRoot}
                 aria-label="Compact grid"
               >
-                <Checkbox.Indicator className={styles.checkboxIndicator}>
+                <Checkbox.Indicator>
                   <Check size={12} weight="bold" aria-hidden="true" />
                 </Checkbox.Indicator>
               </Checkbox.Root>
@@ -178,7 +172,7 @@ export const CheckboxDemo: React.FC = () => {
                   Tightens the spacing scale to show more tabular data on wide displays.
                 </div>
               </div>
-            </label>
+            </CheckboxCard>
           </div>
         </section>
 
@@ -192,23 +186,23 @@ export const CheckboxDemo: React.FC = () => {
           </div>
           <div className={styles.previewArea}>
             <div className="flex items-center gap-6">
-              <label className={styles.checkboxLabel}>
-                <Checkbox.Root checked={false} disabled className={styles.checkboxRoot} aria-label="Disabled unchecked">
-                  <Checkbox.Indicator className={styles.checkboxIndicator}>
+              <CheckboxLabel>
+                <Checkbox.Root checked={false} disabled aria-label="Disabled unchecked">
+                  <Checkbox.Indicator>
                     <Check size={12} weight="bold" aria-hidden="true" />
                   </Checkbox.Indicator>
                 </Checkbox.Root>
                 <span className="text-xs text-[var(--color-neutral-text-muted,#71717a)]">Disabled unchecked</span>
-              </label>
+              </CheckboxLabel>
 
-              <label className={styles.checkboxLabel}>
-                <Checkbox.Root checked={true} disabled className={styles.checkboxRoot} aria-label="Disabled checked">
-                  <Checkbox.Indicator className={styles.checkboxIndicator}>
+              <CheckboxLabel>
+                <Checkbox.Root checked={true} disabled aria-label="Disabled checked">
+                  <Checkbox.Indicator>
                     <Check size={12} weight="bold" aria-hidden="true" />
                   </Checkbox.Indicator>
                 </Checkbox.Root>
                 <span className="text-xs text-[var(--color-neutral-text-muted,#71717a)]">Disabled checked</span>
-              </label>
+              </CheckboxLabel>
             </div>
           </div>
         </section>

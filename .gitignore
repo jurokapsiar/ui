@@ -8,6 +8,7 @@ node_modules/
 .yarn/
 .bun/
 .vite/
+.vitest/
 
 # Build output
 /build/

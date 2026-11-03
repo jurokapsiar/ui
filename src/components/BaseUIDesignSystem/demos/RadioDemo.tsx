@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { RadioGroup } from '@base-ui-components/react/radio-group';
-import { Radio } from '@base-ui-components/react/radio';
+import { Radio, RadioCard, RadioGroup, RadioLabel } from '../../../design-system/base';
 import { DemoCard, DemoFrame } from './DemoFrame';
-import styles from './BaseUIDemos.module.css';
 
 const FORMATS = [
   { id: 'cascade', label: 'CSS cascade layers (@layer theme)' },
@@ -34,16 +32,15 @@ export const RadioDemo: React.FC = () => {
         <RadioGroup
           value={selectedFormat}
           onValueChange={setSelectedFormat}
-          className={styles.radioGroupRoot}
           aria-label="Token output format"
         >
           {FORMATS.map((format) => (
-            <label key={format.id} className={styles.radioItemContainer}>
-              <Radio.Root value={format.id} className={styles.radioRoot} aria-label={format.label}>
-                <Radio.Indicator className={styles.radioIndicator} />
+              <RadioLabel key={format.id}>
+              <Radio.Root value={format.id} aria-label={format.label}>
+                <Radio.Indicator />
               </Radio.Root>
               <span className="text-sm text-[var(--color-neutral-text,#111113)]">{format.label}</span>
-            </label>
+              </RadioLabel>
           ))}
         </RadioGroup>
       </DemoCard>
@@ -56,20 +53,19 @@ export const RadioDemo: React.FC = () => {
           aria-label="Layout density"
         >
           {DENSITIES.map((card) => (
-            <label key={card.id} className={styles.radioCard}>
+            <RadioCard key={card.id}>
               <Radio.Root
                 value={card.id}
-                className={styles.radioRoot}
                 style={{ marginTop: 2 }}
                 aria-label={card.title}
               >
-                <Radio.Indicator className={styles.radioIndicator} />
+                <Radio.Indicator />
               </Radio.Root>
               <span>
                 <span className="block text-sm font-bold text-[var(--color-neutral-text,#111113)]">{card.title}</span>
                 <span className="block text-xs text-[var(--color-neutral-text-muted,#71717a)] mt-0.5">{card.desc}</span>
               </span>
-            </label>
+            </RadioCard>
           ))}
         </RadioGroup>
       </DemoCard>

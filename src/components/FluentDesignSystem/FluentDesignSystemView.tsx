@@ -1,8 +1,6 @@
 import React from 'react';
-import { Provider } from '@fluentui/react-headless-components-preview/provider';
-import '../../design-system/fluent/base.css';
 import { useDesignSystem } from '../../design-system/DesignSystemContext';
-import { FluentSizeContext, controlSizeFromTouchTarget } from '../../design-system/fluent/size';
+import { FluentProvider } from '../../design-system/fluent';
 import { TokenPaneShell } from '../TokenPane/TokenPaneShell';
 import { SwitchDemo } from './demos/SwitchDemo';
 import { PopoverDemo } from './demos/PopoverDemo';
@@ -22,9 +20,11 @@ import { IconButtonsDemo } from './demos/IconButtonsDemo';
 import { ListsDemo } from './demos/ListsDemo';
 import { SelectDemo } from './demos/SelectDemo';
 import { TextFieldDemo } from './demos/TextFieldDemo';
+import { FluentTaskWorkspace } from '../TaskWorkspace/FluentTaskWorkspace';
 import styles from './FluentDemos.module.css';
 
 const DEMOS: Record<string, React.FC> = {
+  workspace: FluentTaskWorkspace,
   switch: SwitchDemo,
   popover: PopoverDemo,
   dialog: DialogDemo,
@@ -46,20 +46,17 @@ const DEMOS: Record<string, React.FC> = {
 };
 
 export const FluentDesignSystemView: React.FC = () => {
-  const { selectedComponentId, tokens } = useDesignSystem();
-  const size = controlSizeFromTouchTarget(tokens.touchTargetMin);
+  const { selectedComponentId } = useDesignSystem();
   const Demo = DEMOS[selectedComponentId] ?? SwitchDemo;
 
   return (
     <div className="flex flex-col min-h-screen bg-[var(--color-neutral-bg,#ffffff)] text-[var(--color-neutral-text,#111113)]">
       <TokenPaneShell libraryName="Fluent UI">
-        <Provider>
-          <div data-fluent-root className={styles.fluentRoot}>
-            <FluentSizeContext.Provider value={size}>
-              <Demo />
-            </FluentSizeContext.Provider>
-          </div>
-        </Provider>
+        <div className={styles.fluentRoot}>
+          <FluentProvider>
+            <Demo />
+          </FluentProvider>
+        </div>
       </TokenPaneShell>
     </div>
   );

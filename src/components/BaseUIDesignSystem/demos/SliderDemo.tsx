@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Slider } from '@base-ui-components/react/slider';
+import { Slider } from '../../../design-system/base';
 import styles from './BaseUIDemos.module.css';
 
 export const SliderDemo: React.FC = () => {
@@ -48,13 +48,12 @@ export const SliderDemo: React.FC = () => {
                 onValueChange={setSingleVal}
                 min={0}
                 max={100}
-                className={styles.sliderRoot}
                 aria-label="Continuous percentage"
               >
-                <Slider.Control className="flex items-center w-full">
-                  <Slider.Track className={styles.sliderTrack}>
-                    <Slider.Indicator className={styles.sliderIndicator} />
-                    <Slider.Thumb aria-label="Continuous percentage" className={styles.sliderThumb} />
+                <Slider.Control>
+                  <Slider.Track>
+                    <Slider.Indicator />
+                    <Slider.Thumb aria-label="Continuous percentage" />
                   </Slider.Track>
                 </Slider.Control>
               </Slider.Root>
@@ -84,13 +83,12 @@ export const SliderDemo: React.FC = () => {
                 min={0}
                 max={100}
                 step={20}
-                className={styles.sliderRoot}
                 aria-label="Stepped value"
               >
-                <Slider.Control className="flex items-center w-full">
-                  <Slider.Track className={styles.sliderTrack}>
-                    <Slider.Indicator className={styles.sliderIndicator} />
-                    <Slider.Thumb aria-label="Stepped value" className={styles.sliderThumb} />
+                <Slider.Control>
+                  <Slider.Track>
+                    <Slider.Indicator />
+                    <Slider.Thumb aria-label="Stepped value" />
                   </Slider.Track>
                 </Slider.Control>
               </Slider.Root>
@@ -124,14 +122,13 @@ export const SliderDemo: React.FC = () => {
                 onValueChange={setRangeVal}
                 min={0}
                 max={100}
-                className={styles.sliderRoot}
                 aria-label="Latency range"
               >
-                <Slider.Control className="flex items-center w-full">
-                  <Slider.Track className={styles.sliderTrack}>
-                    <Slider.Indicator className={styles.sliderIndicator} />
-                    <Slider.Thumb aria-label="Minimum latency" className={styles.sliderThumb} index={0} />
-                    <Slider.Thumb aria-label="Maximum latency" className={styles.sliderThumb} index={1} />
+                <Slider.Control>
+                  <Slider.Track>
+                    <Slider.Indicator />
+                    <Slider.Thumb aria-label="Minimum latency" index={0} />
+                    <Slider.Thumb aria-label="Maximum latency" index={1} />
                   </Slider.Track>
                 </Slider.Control>
               </Slider.Root>
@@ -155,13 +152,12 @@ export const SliderDemo: React.FC = () => {
             <Slider.Root
               value={50}
               disabled
-              className={styles.sliderRoot}
               aria-label="Locked level"
             >
-              <Slider.Control className="flex items-center w-full opacity-50 cursor-not-allowed">
-                <Slider.Track className={styles.sliderTrack}>
-                  <Slider.Indicator className={styles.sliderIndicator} />
-                  <Slider.Thumb aria-label="Locked level" className={styles.sliderThumb} />
+              <Slider.Control className="opacity-50 cursor-not-allowed">
+                <Slider.Track>
+                  <Slider.Indicator />
+                  <Slider.Thumb aria-label="Locked level" />
                 </Slider.Track>
               </Slider.Control>
             </Slider.Root>

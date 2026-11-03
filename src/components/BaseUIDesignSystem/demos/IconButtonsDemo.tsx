@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Button } from '@base-ui-components/react/button';
-import { Toggle } from '@base-ui-components/react/toggle';
+import { IconButton, IconToggle } from '../../../design-system/base';
 import { BookmarkSimple, Gear, Heart, ShareNetwork, Star } from '../../Icons/phosphor';
 import { DemoCard, DemoFrame } from './DemoFrame';
-import styles from './BaseUIDemos.module.css';
 
 export const IconButtonsDemo: React.FC = () => {
   const [liked, setLiked] = useState(true);
@@ -20,51 +18,49 @@ export const IconButtonsDemo: React.FC = () => {
       contractNote="aria-pressed on toggles"
     >
       <DemoCard title="Standard" subtitle="Transparent until hovered; for toolbars and dense rows">
-        <Button className={styles.iconBtn} aria-label="Open settings">
+        <IconButton aria-label="Open settings">
           <Gear size={20} aria-hidden="true" />
-        </Button>
-        <Button className={styles.iconBtn} aria-label="Share link">
+        </IconButton>
+        <IconButton aria-label="Share link">
           <ShareNetwork size={20} aria-hidden="true" />
-        </Button>
+        </IconButton>
       </DemoCard>
 
       <DemoCard title="Filled" subtitle="Brand fill for the primary icon action">
-        <Button className={styles.iconBtn} data-variant="filled" aria-label="Add to favourites">
+        <IconButton data-variant="filled" aria-label="Add to favourites">
           <Star size={20} aria-hidden="true" />
-        </Button>
-        <Button className={styles.iconBtn} data-variant="filled" aria-label="Open settings" disabled>
+        </IconButton>
+        <IconButton data-variant="filled" aria-label="Open settings" disabled>
           <Gear size={20} aria-hidden="true" />
-        </Button>
+        </IconButton>
       </DemoCard>
 
       <DemoCard title="Tonal and outlined" subtitle="Medium emphasis: a soft container or a strong outline">
-        <Button className={styles.iconBtn} data-variant="tonal" aria-label="Share link">
+        <IconButton data-variant="tonal" aria-label="Share link">
           <ShareNetwork size={20} aria-hidden="true" />
-        </Button>
-        <Button className={styles.iconBtn} data-variant="outlined" aria-label="Open settings">
+        </IconButton>
+        <IconButton data-variant="outlined" aria-label="Open settings">
           <Gear size={20} aria-hidden="true" />
-        </Button>
+        </IconButton>
       </DemoCard>
 
       <DemoCard title="Toggle" subtitle="Pressed state uses a tint, a ring and aria-pressed">
-        <Toggle
-          className={styles.iconBtn}
+        <IconToggle
           data-variant="toggle"
           pressed={liked}
           onPressedChange={setLiked}
           aria-label="Like"
         >
           <Heart size={20} weight={liked ? 'fill' : 'regular'} aria-hidden="true" />
-        </Toggle>
-        <Toggle
-          className={styles.iconBtn}
+        </IconToggle>
+        <IconToggle
           data-variant="toggle"
           pressed={saved}
           onPressedChange={setSaved}
           aria-label="Save for later"
         >
           <BookmarkSimple size={20} weight={saved ? 'fill' : 'regular'} aria-hidden="true" />
-        </Toggle>
+        </IconToggle>
       </DemoCard>
     </DemoFrame>
   );

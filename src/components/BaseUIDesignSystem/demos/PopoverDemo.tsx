@@ -1,7 +1,6 @@
 import React, { useId, useState } from 'react';
-import { Popover } from '@base-ui-components/react/popover';
+import { Field, Input, Popover } from '../../../design-system/base';
 import { DemoCard, DemoFrame } from './DemoFrame';
-import styles from './BaseUIDemos.module.css';
 
 export const PopoverDemo: React.FC = () => {
   const [tagInput, setTagInput] = useState('design-ops');
@@ -21,15 +20,15 @@ export const PopoverDemo: React.FC = () => {
       <DemoCard title="Directional placements" subtitle="Top, bottom, left and right positioning with collision checks">
         {(['top', 'bottom', 'left', 'right'] as const).map((side) => (
           <Popover.Root key={side}>
-            <Popover.Trigger className={styles.popoverTrigger}>
+            <Popover.Trigger>
               <span>Placement: {side}</span>
             </Popover.Trigger>
             <Popover.Portal>
-              <Popover.Positioner side={side} sideOffset={8} className={styles.popoverPositioner}>
-                <Popover.Popup className={styles.popoverPopup}>
-                  <Popover.Arrow className={styles.popoverArrow} />
-                  <Popover.Title className={styles.popoverTitle}>Side: {side}</Popover.Title>
-                  <Popover.Description className={styles.popoverDescription}>
+              <Popover.Positioner side={side} sideOffset={8}>
+                <Popover.Popup>
+                  <Popover.Arrow />
+                  <Popover.Title>Side: {side}</Popover.Title>
+                  <Popover.Description>
                     Repositions automatically when a viewport boundary is reached.
                   </Popover.Description>
                 </Popover.Popup>
@@ -41,15 +40,15 @@ export const PopoverDemo: React.FC = () => {
 
       <DemoCard title="Details popover" subtitle="Rich floating surface with a heading, description and status">
         <Popover.Root>
-          <Popover.Trigger className={styles.popoverTrigger}>
+          <Popover.Trigger>
             <span>Inspect token set</span>
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Positioner side="bottom" sideOffset={8} className={styles.popoverPositioner}>
-              <Popover.Popup className={styles.popoverPopup} style={{ maxWidth: 320 }}>
-                <Popover.Arrow className={styles.popoverArrow} />
-                <Popover.Title className={styles.popoverTitle}>Brand palette</Popover.Title>
-                <Popover.Description className={styles.popoverDescription}>
+            <Popover.Positioner side="bottom" sideOffset={8}>
+              <Popover.Popup style={{ maxWidth: 320 }}>
+                <Popover.Arrow />
+                <Popover.Title>Brand palette</Popover.Title>
+                <Popover.Description>
                   Sample content: primary, on-primary and neutral surface colours.
                 </Popover.Description>
                 <p className="text-xs font-mono text-[var(--color-neutral-text-muted,#71717a)]">Status: up to date</p>
@@ -64,22 +63,22 @@ export const PopoverDemo: React.FC = () => {
           Active category: <strong className="text-[var(--color-neutral-text,#111113)]">{submittedTag}</strong>
         </p>
         <Popover.Root>
-          <Popover.Trigger className={styles.popoverTrigger}>
+          <Popover.Trigger>
             <span>Edit system tag</span>
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Positioner side="top" sideOffset={10} className={styles.popoverPositioner}>
-              <Popover.Popup className={styles.popoverPopup} style={{ width: 300 }}>
-                <Popover.Arrow className={styles.popoverArrow} />
-                <Popover.Title className={styles.popoverTitle}>Update namespace</Popover.Title>
-                <Popover.Description className={styles.popoverDescription}>
+            <Popover.Positioner side="top" sideOffset={10}>
+              <Popover.Popup style={{ width: 300 }}>
+                <Popover.Arrow />
+                <Popover.Title>Update namespace</Popover.Title>
+                <Popover.Description>
                   Assign this primitive component to an organisational domain.
                 </Popover.Description>
-                <div className={styles.fieldRoot}>
-                  <label htmlFor={tagId} className={styles.fieldLabel}>
+                  <Field.Root>
+                  <Field.Label htmlFor={tagId}>
                     Namespace
-                  </label>
-                  <input
+                  </Field.Label>
+                  <Input
                     id={tagId}
                     name="namespace"
                     type="text"
@@ -87,20 +86,18 @@ export const PopoverDemo: React.FC = () => {
                     spellCheck={false}
                     value={tagInput}
                     onChange={(e) => setTagInput(e.target.value)}
-                    className={styles.fieldInput}
                     data-variant="outlined"
                   />
-                </div>
+                  </Field.Root>
                 <div className="flex items-center justify-end gap-2 mt-3">
                   <Popover.Close
-                    className={styles.btn}
                     data-variant="filled"
                     onClick={() => setSubmittedTag(tagInput.trim() || submittedTag)}
                   >
                     Save tag
                   </Popover.Close>
                 </div>
-              </Popover.Popup>
+                </Popover.Popup>
             </Popover.Positioner>
           </Popover.Portal>
         </Popover.Root>

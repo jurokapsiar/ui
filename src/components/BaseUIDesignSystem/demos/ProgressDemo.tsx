@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Progress } from '@base-ui-components/react/progress';
+import { Button, Progress } from '../../../design-system/base';
 import { DemoCard, DemoFrame } from './DemoFrame';
-import styles from './BaseUIDemos.module.css';
 
 export const ProgressDemo: React.FC = () => {
   const [progressVal, setProgressVal] = useState<number>(68);
@@ -21,35 +20,33 @@ export const ProgressDemo: React.FC = () => {
           <span>Completion</span>
           <span>{progressVal}%</span>
         </div>
-        <Progress.Root value={progressVal} max={100} className={styles.progressRoot} aria-label="Completion">
-          <Progress.Track className={styles.progressTrack}>
-            <Progress.Indicator className={styles.progressIndicator} style={{ width: `${progressVal}%` }} />
+        <Progress.Root value={progressVal} max={100} aria-label="Completion">
+          <Progress.Track>
+            <Progress.Indicator style={{ width: `${progressVal}%` }} />
           </Progress.Track>
         </Progress.Root>
         <div className="flex items-center gap-2">
-          <button
+          <Button
             type="button"
-            className={styles.btn}
             data-variant="outlined"
             data-disabled={progressVal <= 0 ? '' : undefined}
             disabled={progressVal <= 0}
             onClick={() => setProgressVal((v) => Math.max(0, v - 10))}
           >
             Back 10%
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
-            className={styles.btn}
             data-variant="filled"
             data-disabled={progressVal >= 100 ? '' : undefined}
             disabled={progressVal >= 100}
             onClick={() => setProgressVal((v) => Math.min(100, v + 10))}
           >
             Advance 10%
-          </button>
-          <button type="button" className={styles.btn} data-variant="text" onClick={() => setProgressVal(0)}>
+          </Button>
+          <Button type="button" data-variant="text" onClick={() => setProgressVal(0)}>
             Reset
-          </button>
+          </Button>
         </div>
       </DemoCard>
 
@@ -60,9 +57,9 @@ export const ProgressDemo: React.FC = () => {
             {progressVal === 100 ? '✓ Verified' : `${progressVal}%`}
           </span>
         </div>
-        <Progress.Root value={progressVal} max={100} className={styles.progressRoot} aria-label="Contrast verification">
-          <Progress.Track className={styles.progressTrack}>
-            <Progress.Indicator className={styles.progressIndicator} style={{ width: `${progressVal}%` }} />
+        <Progress.Root value={progressVal} max={100} aria-label="Contrast verification">
+          <Progress.Track>
+            <Progress.Indicator style={{ width: `${progressVal}%` }} />
           </Progress.Track>
         </Progress.Root>
         <p className="text-xs text-[var(--color-neutral-text-muted,#71717a)]" role="status">

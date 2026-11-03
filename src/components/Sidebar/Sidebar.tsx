@@ -45,6 +45,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </Tabs.List>
       </Tabs.Root>
 
+      <Button
+        className={styles.topicButton}
+        aria-label="Task workspace demo"
+        data-active={selectedBaseUIComponent === 'workspace'}
+        aria-current={selectedBaseUIComponent === 'workspace' ? 'page' : undefined}
+        onClick={() => onSelectBaseUIComponent('workspace')}
+      >
+        <span className={styles.iconWrapper}><DuotoneIcon name="layout" tone="mint" size={18} /></span>
+        <span className={styles.contentWrapper}>
+          <span className={styles.topicTitle}>Task workspace</span>
+          <span className={styles.topicMeta}>All components in a working interface</span>
+        </span>
+      </Button>
+
       <div className={styles.sectionHeader}>
         <h2 className={styles.sectionTitle}>{isFluent ? 'Fluent UI components' : 'Base UI primitives'}</h2>
         <span className={styles.sectionCount}>{BASE_UI_COMPONENTS.length}</span>

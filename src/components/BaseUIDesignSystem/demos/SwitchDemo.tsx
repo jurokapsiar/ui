@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch } from '@base-ui-components/react/switch';
+import { Switch, SwitchLabel, SwitchText } from '../../../design-system/base';
 import styles from './BaseUIDemos.module.css';
 
 export const SwitchDemo: React.FC = () => {
@@ -45,17 +45,16 @@ export const SwitchDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <label className={styles.switchContainer}>
-              <span className={styles.switchLabel}>Automated APCA validation</span>
+            <SwitchLabel>
+              <SwitchText>Automated APCA validation</SwitchText>
               <Switch.Root
                 checked={checked1}
                 onCheckedChange={setChecked1}
-                className={styles.switchRoot}
                 aria-label="Automated APCA validation"
               >
-                <Switch.Thumb className={styles.switchThumb} />
+                <Switch.Thumb />
               </Switch.Root>
-            </label>
+            </SwitchLabel>
           </div>
         </section>
 
@@ -74,10 +73,10 @@ export const SwitchDemo: React.FC = () => {
                 <Switch.Root
                   checked={checked2}
                   onCheckedChange={setChecked2}
-                  className={`${styles.switchRoot} ${styles.switchRootSmall}`}
+                  data-size="small"
                   aria-label="Small switch"
                 >
-                  <Switch.Thumb className={styles.switchThumb} />
+                  <Switch.Thumb />
                 </Switch.Root>
               </label>
 
@@ -86,10 +85,9 @@ export const SwitchDemo: React.FC = () => {
                 <Switch.Root
                   checked={checked2}
                   onCheckedChange={setChecked2}
-                  className={styles.switchRoot}
                   aria-label="Medium switch"
                 >
-                  <Switch.Thumb className={styles.switchThumb} />
+                  <Switch.Thumb />
                 </Switch.Root>
               </label>
 
@@ -98,10 +96,10 @@ export const SwitchDemo: React.FC = () => {
                 <Switch.Root
                   checked={checked2}
                   onCheckedChange={setChecked2}
-                  className={`${styles.switchRoot} ${styles.switchRootLarge}`}
+                  data-size="large"
                   aria-label="Large switch"
                 >
-                  <Switch.Thumb className={styles.switchThumb} />
+                  <Switch.Thumb />
                 </Switch.Root>
               </label>
             </div>
@@ -118,31 +116,29 @@ export const SwitchDemo: React.FC = () => {
           </div>
           <div className={styles.previewArea}>
             <div className="flex flex-col gap-3">
-              <label className={styles.switchContainer}>
-                <span className={styles.switchLabel}>Emergency circuit trip</span>
+              <SwitchLabel>
+                <SwitchText>Emergency circuit trip</SwitchText>
                 <Switch.Root
                   checked={checkedDanger}
                   onCheckedChange={setCheckedDanger}
-                  className={styles.switchRoot}
                   data-tone="danger"
                   aria-label="Emergency circuit trip"
                 >
-                  <Switch.Thumb className={styles.switchThumb} />
+                  <Switch.Thumb />
                 </Switch.Root>
-              </label>
+              </SwitchLabel>
 
-              <label className={styles.switchContainer}>
-                <span className={styles.switchLabel}>Production health check</span>
+              <SwitchLabel>
+                <SwitchText>Production health check</SwitchText>
                 <Switch.Root
                   checked={checkedSuccess}
                   onCheckedChange={setCheckedSuccess}
-                  className={styles.switchRoot}
                   data-tone="success"
                   aria-label="Production health check"
                 >
-                  <Switch.Thumb className={styles.switchThumb} />
+                  <Switch.Thumb />
                 </Switch.Root>
-              </label>
+              </SwitchLabel>
             </div>
           </div>
         </section>
@@ -157,29 +153,27 @@ export const SwitchDemo: React.FC = () => {
           </div>
           <div className={styles.previewArea}>
             <div className="flex items-center gap-8">
-              <label className={styles.switchContainer}>
-                <span className={styles.switchLabel}>Locked (off)</span>
+              <SwitchLabel>
+                <SwitchText>Locked (off)</SwitchText>
                 <Switch.Root
                   checked={false}
                   disabled
-                  className={styles.switchRoot}
                   aria-label="Locked switch off"
                 >
-                  <Switch.Thumb className={styles.switchThumb} />
+                  <Switch.Thumb />
                 </Switch.Root>
-              </label>
+              </SwitchLabel>
 
-              <label className={styles.switchContainer}>
-                <span className={styles.switchLabel}>Locked (on)</span>
+              <SwitchLabel>
+                <SwitchText>Locked (on)</SwitchText>
                 <Switch.Root
                   checked={true}
                   disabled
-                  className={styles.switchRoot}
                   aria-label="Locked switch on"
                 >
-                  <Switch.Thumb className={styles.switchThumb} />
+                  <Switch.Thumb />
                 </Switch.Root>
-              </label>
+              </SwitchLabel>
             </div>
           </div>
         </section>
@@ -202,10 +196,9 @@ export const SwitchDemo: React.FC = () => {
             <Switch.Root
               checked={telemetry}
               onCheckedChange={setTelemetry}
-              className={styles.switchRoot}
               aria-labelledby="sw-telemetry"
             >
-              <Switch.Thumb className={styles.switchThumb} />
+              <Switch.Thumb />
             </Switch.Root>
           </div>
 
@@ -217,10 +210,9 @@ export const SwitchDemo: React.FC = () => {
             <Switch.Root
               checked={apcaCheck}
               onCheckedChange={setApcaCheck}
-              className={styles.switchRoot}
               aria-labelledby="sw-apca"
             >
-              <Switch.Thumb className={styles.switchThumb} />
+              <Switch.Thumb />
             </Switch.Root>
           </div>
 
@@ -232,10 +224,9 @@ export const SwitchDemo: React.FC = () => {
             <Switch.Root
               checked={gpuMotion}
               onCheckedChange={setGpuMotion}
-              className={styles.switchRoot}
               aria-labelledby="sw-motion"
             >
-              <Switch.Thumb className={styles.switchThumb} />
+              <Switch.Thumb />
             </Switch.Root>
           </div>
         </div>

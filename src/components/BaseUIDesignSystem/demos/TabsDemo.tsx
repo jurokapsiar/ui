@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs } from '@base-ui-components/react/tabs';
+import { Tabs } from '../../../design-system/base';
 import styles from './BaseUIDemos.module.css';
 
 export const TabsDemo: React.FC = () => {
@@ -38,26 +38,26 @@ export const TabsDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Tabs.Root value={activeTab1} onValueChange={setActiveTab1} className={styles.tabsRoot}>
-              <Tabs.List className={styles.tabsList} aria-label="Documentation sections">
-                <Tabs.Tab value="overview" className={styles.tabItem}>
+              <Tabs.Root value={activeTab1} onValueChange={setActiveTab1}>
+              <Tabs.List aria-label="Documentation sections">
+                <Tabs.Tab value="overview">
                   Overview
                 </Tabs.Tab>
-                <Tabs.Tab value="specifications" className={styles.tabItem}>
+                <Tabs.Tab value="specifications">
                   Specifications
                 </Tabs.Tab>
-                <Tabs.Tab value="telemetry" className={styles.tabItem}>
+                <Tabs.Tab value="telemetry">
                   Telemetry
                 </Tabs.Tab>
               </Tabs.List>
 
-              <Tabs.Panel value="overview" className={styles.tabPanel}>
+              <Tabs.Panel value="overview">
                 Base UI decouples component logic from opinionated styling engines. Primitives maintain full WAI-ARIA conformance and expose state via HTML data attributes.
               </Tabs.Panel>
-              <Tabs.Panel value="specifications" className={styles.tabPanel}>
+              <Tabs.Panel value="specifications">
                 Tokens are structured in @layer theme, and styles are encapsulated in @layer components.&lt;primitive&gt; to guarantee deterministic cascade specificity.
               </Tabs.Panel>
-              <Tabs.Panel value="telemetry" className={styles.tabPanel}>
+              <Tabs.Panel value="telemetry">
                 Perceptual contrast verification runs in real-time, enforcing APCA Lc ≥ 75 for body text and 44px pointer touch targets.
               </Tabs.Panel>
             </Tabs.Root>
@@ -73,26 +73,26 @@ export const TabsDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Tabs.Root value={activeTab2} onValueChange={setActiveTab2} className={styles.tabsRoot}>
-              <Tabs.List className={styles.tabsListSegmented} aria-label="Token filters">
-                <Tabs.Tab value="tokens" className={styles.tabItemSegmented}>
+              <Tabs.Root value={activeTab2} onValueChange={setActiveTab2}>
+              <Tabs.List data-variant="segmented" aria-label="Token filters">
+                <Tabs.Tab value="tokens" data-variant="segmented">
                   Tokens
                 </Tabs.Tab>
-                <Tabs.Tab value="layers" className={styles.tabItemSegmented}>
+                <Tabs.Tab value="layers" data-variant="segmented">
                   Cascade Layers
                 </Tabs.Tab>
-                <Tabs.Tab value="accessibility" className={styles.tabItemSegmented}>
+                <Tabs.Tab value="accessibility" data-variant="segmented">
                   Accessibility
                 </Tabs.Tab>
               </Tabs.List>
 
-              <Tabs.Panel value="tokens" className={styles.tabPanel}>
+              <Tabs.Panel value="tokens">
                 Active OKLCH ramps: Brand Primary, On-Primary, Neutral Surface, and 4px grid spacing scales.
               </Tabs.Panel>
-              <Tabs.Panel value="layers" className={styles.tabPanel}>
+              <Tabs.Panel value="layers">
                 Evaluation order: @layer theme &lt; @layer base &lt; @layer components &lt; @layer utilities.
               </Tabs.Panel>
-              <Tabs.Panel value="accessibility" className={styles.tabPanel}>
+              <Tabs.Panel value="accessibility">
                 Audited against WCAG 2.2 Criterion 2.5.8 (Pointer Target Spacing) and APCA 0.98G-4g.
               </Tabs.Panel>
             </Tabs.Root>

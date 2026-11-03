@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Bell, Check, Envelope, File, Folder } from '../../Icons/phosphor';
+import { List, ListHeadline, ListItem, ListLead, ListMeta, ListOption, ListSupport, ListText } from '../../../design-system/base';
 import { DemoCard, DemoFrame } from './DemoFrame';
 import styles from './BaseUIDemos.module.css';
 
@@ -36,50 +37,49 @@ export const ListsDemo: React.FC = () => {
       contractNote="Arrow, Home and End keys"
     >
       <DemoCard title="Three-part list" subtitle="Leading icon, headline with supporting text, trailing meta" column>
-        <ul className={styles.list} aria-label="Project files">
+        <List aria-label="Project files">
           {ITEMS.map(({ id, icon: Icon, headline, support, meta }) => (
-            <li key={id} className={styles.listItem}>
-              <span className={styles.listLead}>
+            <ListItem key={id}>
+              <ListLead>
                 <Icon size={20} aria-hidden="true" />
-              </span>
-              <span className={styles.listText}>
-                <span className={styles.listHeadline}>{headline}</span>
-                <span className={styles.listSupport}>{support}</span>
-              </span>
-              <span className={styles.listMeta}>{meta}</span>
-            </li>
+              </ListLead>
+              <ListText>
+                <ListHeadline>{headline}</ListHeadline>
+                <ListSupport>{support}</ListSupport>
+              </ListText>
+              <ListMeta>{meta}</ListMeta>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       </DemoCard>
 
       <DemoCard title="Selectable list" subtitle="Single selection with roving focus and a selected tint" column>
-        <ul className={styles.list} role="listbox" aria-label="Choose a report" ref={listRef}>
+        <List role="listbox" aria-label="Choose a report" ref={listRef}>
           {ITEMS.map(({ id, icon: Icon, headline, support, meta }, index) => {
             const isSelected = selected === id;
             return (
               <li key={id} role="presentation">
-                <button
+                <ListOption
                   type="button"
                   role="option"
                   aria-selected={isSelected}
                   tabIndex={isSelected ? 0 : -1}
-                  className={styles.listOption}
                   onClick={() => setSelected(id)}
                   onKeyDown={(e) => moveFocus(e, index)}
                 >
-                  <span className={styles.listLead}>
+                  <ListLead>
                     <Icon size={20} aria-hidden="true" />
-                  </span>
-                  <span className={styles.listText}>
-                    <span className={styles.listHeadline}>{headline}</span>
-                    <span className={styles.listSupport}>{support}</span>
-                  </span>
-                  <span className={styles.listMeta}>{isSelected ? <Check size={16} weight="bold" aria-label="Selected" /> : meta}</span>
-                </button>
+                  </ListLead>
+                  <ListText>
+                    <ListHeadline>{headline}</ListHeadline>
+                    <ListSupport>{support}</ListSupport>
+                  </ListText>
+                  <ListMeta>{isSelected ? <Check size={16} weight="bold" aria-label="Selected" /> : meta}</ListMeta>
+                </ListOption>
               </li>
             );
           })}
-        </ul>
+        </List>
       </DemoCard>
     </DemoFrame>
   );

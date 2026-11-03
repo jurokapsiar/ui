@@ -1,0 +1,37 @@
+@layer theme, base, components, utilities;
+
+@layer theme {
+  :root {
+    --color-brand-primary: oklch(0.55 0.22 260);
+    --color-brand-primary-hover: oklch(0.48 0.22 260);
+    --color-on-primary: oklch(0.99 0 0);
+    --color-neutral-bg: oklch(0.985 0.005 260);
+    --color-neutral-surface: oklch(0.94 0.01 260);
+    --color-neutral-surface-hover: oklch(0.91 0.015 260);
+    --color-neutral-border: oklch(0.85 0.015 260);
+    --color-neutral-border-strong: oklch(0.58 0.02 260);
+    --color-neutral-text: oklch(0.18 0.02 260);
+    --color-neutral-text-muted: oklch(0.44 0.02 260);
+    --color-accent: oklch(0.60 0.18 200);
+    --color-success: oklch(0.50 0.18 145);
+    --color-danger: oklch(0.55 0.22 25);
+    --color-focus-ring: oklch(0.18 0.02 260);
+    --color-brand-tint: color-mix(in oklch, oklch(0.55 0.22 260) 12%, oklch(0.985 0.005 260));
+    --color-brand-tint-border: color-mix(in oklch, oklch(0.55 0.22 260) 40%, oklch(0.985 0.005 260));
+    --radius-base: 4px;
+    --radius-sm: 2px;
+    --radius-lg: 6px;
+    --border-width: 1px;
+    --spacing-base: 4px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --touch-target-min: 44px;
+    --shadow-elevation-low: 0 1px 2px oklch(0.20 0.02 260 / 0.08);
+    --shadow-elevation-high: 0 8px 24px oklch(0.20 0.02 260 / 0.14), 0 2px 6px oklch(0.20 0.02 260 / 0.06);
+    --font-family-display: Inter, sans-serif;
+    --font-family-body: Inter, sans-serif;
+    --font-family-mono: JetBrains Mono, monospace;
+  }
+}

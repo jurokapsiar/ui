@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Collapsible } from '@base-ui-components/react/collapsible';
+import { Collapsible } from '../../../design-system/base';
 import styles from './BaseUIDemos.module.css';
 
 export const CollapsibleDemo: React.FC = () => {
@@ -37,14 +37,14 @@ export const CollapsibleDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Collapsible.Root open={open1} onOpenChange={setOpen1} className={styles.collapsibleRoot}>
-              <Collapsible.Trigger className={styles.collapsibleTrigger}>
+            <Collapsible.Root open={open1} onOpenChange={setOpen1}>
+              <Collapsible.Trigger>
                 <span>Cascade layer precedence rules</span>
                 <span className="font-mono text-xs text-[var(--ds-brand-ink,#2563eb)]">
                   {open1 ? 'Hide' : 'Expand'}
                 </span>
               </Collapsible.Trigger>
-              <Collapsible.Panel className={styles.collapsiblePanel}>
+              <Collapsible.Panel>
                 Styles declared inside later layers override earlier ones regardless of specificity:
                 <div className="font-mono text-xs mt-2 p-2 rounded bg-[var(--color-neutral-surface,#f4f4f6)] border border-[var(--color-neutral-border,rgba(0,0,0,0.1))]">
                   @layer theme &lt; base &lt; components &lt; utilities;
@@ -63,14 +63,14 @@ export const CollapsibleDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Collapsible.Root open={open2} onOpenChange={setOpen2} className={styles.collapsibleRoot}>
-              <Collapsible.Trigger className={styles.collapsibleTrigger}>
+            <Collapsible.Root open={open2} onOpenChange={setOpen2}>
+              <Collapsible.Trigger>
                 <span className="font-mono text-xs">OKLCH Theme Invariants</span>
                 <span className="font-mono text-xs text-[var(--ds-brand-ink,#2563eb)]">
                   {open2 ? 'Collapse JSON' : 'Show JSON'}
                 </span>
               </Collapsible.Trigger>
-              <Collapsible.Panel className={styles.collapsiblePanel}>
+              <Collapsible.Panel>
                 <pre className="font-mono text-xs p-2 rounded bg-[var(--color-neutral-surface,#f4f4f6)] border border-[var(--color-neutral-border,rgba(0,0,0,0.1))] overflow-x-auto text-[var(--color-neutral-text,#111113)]">
 {`{
   "$schema": "https://www.designtokens.org/tr/2025.10/format/",

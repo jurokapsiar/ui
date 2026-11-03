@@ -62,4 +62,17 @@ describe('DesignSystemContext token editing', () => {
     act(() => ctx.setTokenPaneOpen((v) => !v));
     expect(window.localStorage.getItem('ui-design-systems.tokenPane.open')).toBe('0');
   });
+
+  it('keeps showcase selection and pane state alongside shared theme state', () => {
+    act(() => {
+      ctx.selectComponent('buttons');
+      ctx.setTokenPaneOpen(true);
+      ctx.updateToken('radiusBase', '18px');
+    });
+
+    expect(ctx.selectedComponentId).toBe('buttons');
+    expect(ctx.isTokenPaneOpen).toBe(true);
+    expect(ctx.tokens.radiusBase).toBe('18px');
+    expect(document.documentElement.style.getPropertyValue('--radius-base')).toBe('18px');
+  });
 });

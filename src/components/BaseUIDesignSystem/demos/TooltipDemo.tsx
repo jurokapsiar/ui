@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip } from '@base-ui-components/react/tooltip';
+import { Tooltip } from '../../../design-system/base';
 import { Info } from '../../Icons/phosphor';
 import styles from './BaseUIDemos.module.css';
 
@@ -41,12 +41,12 @@ export const TooltipDemo: React.FC = () => {
               <div className="flex flex-wrap items-center gap-4">
                 {(['top', 'bottom', 'left', 'right'] as const).map((side) => (
                   <Tooltip.Root key={side}>
-                    <Tooltip.Trigger className={styles.popoverTrigger}>
+                    <Tooltip.Trigger>
                       <span>Hover: {side}</span>
                     </Tooltip.Trigger>
                     <Tooltip.Portal>
                       <Tooltip.Positioner side={side} sideOffset={6}>
-                        <Tooltip.Popup className={styles.tooltipPopup}>
+                        <Tooltip.Popup>
                           Tooltip on {side} axis
                         </Tooltip.Popup>
                       </Tooltip.Positioner>
@@ -69,13 +69,13 @@ export const TooltipDemo: React.FC = () => {
           <div className={styles.previewArea}>
             <Tooltip.Provider delay={100}>
               <Tooltip.Root>
-                <Tooltip.Trigger className={styles.popoverTrigger}>
+                <Tooltip.Trigger>
                   <Info size={14} weight="bold" aria-hidden="true" />
                   <span>Focus or Hover Me</span>
                 </Tooltip.Trigger>
                 <Tooltip.Portal>
                   <Tooltip.Positioner side="top" sideOffset={8}>
-                    <Tooltip.Popup className={styles.tooltipPopup} style={{ maxWidth: 220, textAlign: 'center' }}>
+                    <Tooltip.Popup style={{ maxWidth: 220, textAlign: 'center' }}>
                       Announced by screen readers via native aria-describedby binding
                     </Tooltip.Popup>
                   </Tooltip.Positioner>

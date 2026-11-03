@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Select } from '@base-ui-components/react/select';
-import { Field } from '@base-ui-components/react/field';
+import { Field, Select } from '../../../design-system/base';
 import { Check, CaretDown } from '../../Icons/phosphor';
 import { DemoCard, DemoFrame } from './DemoFrame';
-import styles from './BaseUIDemos.module.css';
 
 const FORMATS = [
   { value: 'css-layers', label: 'CSS cascade layers' },
@@ -22,15 +20,15 @@ const FormatSelect: React.FC<FormatSelectProps> = ({ label, disabled, defaultVal
   const [value, setValue] = useState<string | null>(defaultValue);
 
   return (
-    <Field.Root disabled={disabled} className={styles.fieldRoot}>
-      <Field.Label className={styles.fieldLabel}>{label}</Field.Label>
+    <Field.Root disabled={disabled}>
+      <Field.Label>{label}</Field.Label>
       <Select.Root
         items={FORMATS}
         value={value}
         onValueChange={(v) => setValue(v as string | null)}
         disabled={disabled}
       >
-        <Select.Trigger className={styles.selectTrigger}>
+        <Select.Trigger>
           <Select.Value>
             {(v: string | null) => FORMATS.find((f) => f.value === v)?.label ?? 'Choose a format'}
           </Select.Value>
@@ -39,11 +37,11 @@ const FormatSelect: React.FC<FormatSelectProps> = ({ label, disabled, defaultVal
           </Select.Icon>
         </Select.Trigger>
         <Select.Portal>
-          <Select.Positioner sideOffset={6} alignItemWithTrigger={false} className={styles.popoverPositioner}>
-            <Select.Popup className={styles.selectPopup}>
+          <Select.Positioner sideOffset={6} alignItemWithTrigger={false}>
+            <Select.Popup>
               {FORMATS.map((f) => (
-                <Select.Item key={f.value} value={f.value} className={styles.selectItem}>
-                  <span className={styles.selectItemMark}>
+                <Select.Item key={f.value} value={f.value}>
+                  <span>
                     <Select.ItemIndicator>
                       <Check size={16} weight="bold" aria-hidden="true" />
                     </Select.ItemIndicator>

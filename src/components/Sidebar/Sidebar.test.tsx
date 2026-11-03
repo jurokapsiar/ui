@@ -8,12 +8,13 @@ import { Sidebar, type AppMode } from './Sidebar';
 
 const Harness: React.FC = () => {
   const [mode, setMode] = useState<AppMode>('base-ui');
+  const [selected, setSelected] = useState('switch');
   return (
     <Sidebar
       mode={mode}
       onModeChange={setMode}
-      selectedBaseUIComponent="switch"
-      onSelectBaseUIComponent={() => {}}
+      selectedBaseUIComponent={selected}
+      onSelectBaseUIComponent={setSelected}
     />
   );
 };
@@ -43,6 +44,14 @@ const press = (key: string) =>
 const selectedLabel = () => tabs().find((t) => t.getAttribute('aria-selected') === 'true')?.textContent;
 
 describe('Sidebar mode switcher', () => {
+  it('opens the shared Task workspace demo independently of component navigation', () => {
+    const demo = host.querySelector<HTMLButtonElement>('[aria-label="Task workspace demo"]');
+    expect(demo).not.toBeNull();
+    act(() => demo!.click());
+    expect(demo!.getAttribute('aria-current')).toBe('page');
+    expect(host.querySelector('nav [aria-current="page"]')).toBeNull();
+  });
+
   it('exposes the two design systems as a labelled tablist with one tab stop', () => {
     expect(host.querySelector('[role="tablist"]')?.getAttribute('aria-label')).toBe('Sidebar mode');
     expect(tabs().map((t) => t.textContent)).toEqual(['Base UI', 'Fluent UI']);

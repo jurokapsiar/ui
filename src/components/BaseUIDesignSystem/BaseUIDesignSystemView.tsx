@@ -19,12 +19,15 @@ import { IconButtonsDemo } from './demos/IconButtonsDemo';
 import { ListsDemo } from './demos/ListsDemo';
 import { SelectDemo } from './demos/SelectDemo';
 import { TextFieldDemo } from './demos/TextFieldDemo';
+import { BaseTaskWorkspace } from '../TaskWorkspace/BaseTaskWorkspace';
 
 export const BaseUIDesignSystemView: React.FC = () => {
   const { selectedComponentId } = useDesignSystem();
 
   const renderComponentDemo = () => {
     switch (selectedComponentId) {
+      case 'workspace':
+        return <BaseTaskWorkspace />;
       case 'switch':
         return <SwitchDemo />;
       case 'popover':

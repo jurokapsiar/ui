@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Field } from '@base-ui-components/react/field';
-import { Input } from '@base-ui-components/react/input';
+import { Field, Input } from '../../../design-system/base';
 import { DemoCard, DemoFrame } from './DemoFrame';
-import styles from './BaseUIDemos.module.css';
 
 interface TextFieldProps {
   label: string;
@@ -15,10 +13,9 @@ interface TextFieldProps {
 }
 
 const TextField: React.FC<TextFieldProps> = ({ label, variant, help, error, disabled, defaultValue, placeholder }) => (
-  <Field.Root className={styles.fieldRoot} invalid={Boolean(error)} disabled={disabled}>
-    <Field.Label className={styles.fieldLabel}>{label}</Field.Label>
+  <Field.Root invalid={Boolean(error)} disabled={disabled}>
+    <Field.Label>{label}</Field.Label>
     <Input
-      className={styles.fieldInput}
       data-variant={variant}
       data-invalid={error ? '' : undefined}
       defaultValue={defaultValue}
@@ -26,11 +23,11 @@ const TextField: React.FC<TextFieldProps> = ({ label, variant, help, error, disa
       aria-invalid={error ? true : undefined}
     />
     {error ? (
-      <Field.Description className={styles.fieldError} role="alert">
+      <Field.Error match={true} role="alert">
         {error}
-      </Field.Description>
+      </Field.Error>
     ) : help ? (
-      <Field.Description className={styles.fieldHelp}>{help}</Field.Description>
+      <Field.Description>{help}</Field.Description>
     ) : null}
   </Field.Root>
 );
@@ -56,14 +53,13 @@ export const TextFieldDemo: React.FC = () => {
         <TextField label="Project name" variant="filled" help="Used in generated file names" defaultValue="Acme workspace" />
       </DemoCard>
       <DemoCard title="Error state" subtitle="Live validation: edit the address to clear the error" column>
-        <Field.Root className={styles.fieldRoot} invalid={invalid}>
-          <Field.Label className={styles.fieldLabel}>Reviewer email (required)</Field.Label>
+        <Field.Root invalid={invalid}>
+          <Field.Label>Reviewer email (required)</Field.Label>
           <Input
             type="email"
             name="email"
             autoComplete="email"
             required
-            className={styles.fieldInput}
             data-variant="outlined"
             data-invalid={invalid ? '' : undefined}
             value={email}
@@ -71,11 +67,11 @@ export const TextFieldDemo: React.FC = () => {
             aria-invalid={invalid}
           />
           {invalid ? (
-            <Field.Description className={styles.fieldError} role="alert">
+            <Field.Error match={true} role="alert">
               Enter a complete email address
-            </Field.Description>
+            </Field.Error>
           ) : (
-            <Field.Description className={styles.fieldHelp}>Looks good</Field.Description>
+            <Field.Description>Looks good</Field.Description>
           )}
         </Field.Root>
       </DemoCard>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Accordion } from '@base-ui-components/react/accordion';
+import { Accordion, AccordionChevron } from '../../../design-system/base';
 import { CaretDown } from '../../Icons/phosphor';
 import styles from './BaseUIDemos.module.css';
 
@@ -44,40 +44,39 @@ export const AccordionDemo: React.FC = () => {
               aria-label="Exclusive accordion"
               value={singleValue}
               onValueChange={setSingleValue}
-              className={styles.accordionRoot}
             >
-              <Accordion.Item value="item-1" className={styles.accordionItem}>
+              <Accordion.Item value="item-1">
                 <Accordion.Header>
-                  <Accordion.Trigger className={styles.accordionTrigger}>
+                  <Accordion.Trigger>
                     <span>OKLCH Perceptual Uniformity</span>
-                    <CaretDown className={styles.accordionChevron} size={16} weight="bold" aria-hidden="true" />
+                    <AccordionChevron><CaretDown size={16} weight="bold" aria-hidden="true" /></AccordionChevron>
                   </Accordion.Trigger>
                 </Accordion.Header>
-                <Accordion.Panel className={styles.accordionPanel}>
+                <Accordion.Panel>
                   OKLCH aligns with human visual perception. Equal lightness increments produce uniform perceived contrast across different hues, eliminating dark mode clipping.
                 </Accordion.Panel>
               </Accordion.Item>
 
-              <Accordion.Item value="item-2" className={styles.accordionItem}>
+              <Accordion.Item value="item-2">
                 <Accordion.Header>
-                  <Accordion.Trigger className={styles.accordionTrigger}>
+                  <Accordion.Trigger>
                     <span>Cascade layer priority (@layer)</span>
-                    <CaretDown className={styles.accordionChevron} size={16} weight="bold" aria-hidden="true" />
+                    <AccordionChevron><CaretDown size={16} weight="bold" aria-hidden="true" /></AccordionChevron>
                   </Accordion.Trigger>
                 </Accordion.Header>
-                <Accordion.Panel className={styles.accordionPanel}>
+                <Accordion.Panel>
                   By defining @layer theme, base, components, utilities, selector specificity wars are eliminated regardless of bundler chunk ordering.
                 </Accordion.Panel>
               </Accordion.Item>
 
-              <Accordion.Item value="item-3" className={styles.accordionItem}>
+              <Accordion.Item value="item-3">
                 <Accordion.Header>
-                  <Accordion.Trigger className={styles.accordionTrigger}>
+                  <Accordion.Trigger>
                     <span>APCA Contrast Certification</span>
-                    <CaretDown className={styles.accordionChevron} size={16} weight="bold" aria-hidden="true" />
+                    <AccordionChevron><CaretDown size={16} weight="bold" aria-hidden="true" /></AccordionChevron>
                   </Accordion.Trigger>
                 </Accordion.Header>
-                <Accordion.Panel className={styles.accordionPanel}>
+                <Accordion.Panel>
                   APCA computes polarity-dependent lightness contrast (Lc). Body text must meet Lc ≥ 75 to pass automated continuous integration checks.
                 </Accordion.Panel>
               </Accordion.Item>
@@ -98,28 +97,27 @@ export const AccordionDemo: React.FC = () => {
               aria-label="Multi-panel accordion"
               value={multiValue}
               onValueChange={setMultiValue}
-              className={styles.accordionRoot}
             >
-              <Accordion.Item value="m-1" className={styles.accordionItem}>
+              <Accordion.Item value="m-1">
                 <Accordion.Header>
-                  <Accordion.Trigger className={styles.accordionTrigger}>
+                  <Accordion.Trigger>
                     <span>Touch target minimum (44px)</span>
-                    <CaretDown className={styles.accordionChevron} size={16} weight="bold" aria-hidden="true" />
+                    <AccordionChevron><CaretDown size={16} weight="bold" aria-hidden="true" /></AccordionChevron>
                   </Accordion.Trigger>
                 </Accordion.Header>
-                <Accordion.Panel className={styles.accordionPanel}>
+                <Accordion.Panel>
                   WCAG 2.2 Criterion 2.5.8 requires at least 24px pointer targets, with 44px recommended for mobile touch ergonomics.
                 </Accordion.Panel>
               </Accordion.Item>
 
-              <Accordion.Item value="m-2" className={styles.accordionItem}>
+              <Accordion.Item value="m-2">
                 <Accordion.Header>
-                  <Accordion.Trigger className={styles.accordionTrigger}>
+                  <Accordion.Trigger>
                     <span>Headless DOM state attributes</span>
-                    <CaretDown className={styles.accordionChevron} size={16} weight="bold" aria-hidden="true" />
+                    <AccordionChevron><CaretDown size={16} weight="bold" aria-hidden="true" /></AccordionChevron>
                   </Accordion.Trigger>
                 </Accordion.Header>
-                <Accordion.Panel className={styles.accordionPanel}>
+                <Accordion.Panel>
                   Styles are attached via [data-panel-open] and [data-panel-closed] selectors, avoiding fragile JavaScript class mutations.
                 </Accordion.Panel>
               </Accordion.Item>
