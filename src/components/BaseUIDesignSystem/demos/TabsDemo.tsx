@@ -38,7 +38,7 @@ export const TabsDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-              <Tabs.Root value={activeTab1} onValueChange={setActiveTab1}>
+              <Tabs.Root className={styles.tabsWidth} value={activeTab1} onValueChange={setActiveTab1}>
               <Tabs.List aria-label="Documentation sections">
                 <Tabs.Tab value="overview">
                   Overview
@@ -73,7 +73,7 @@ export const TabsDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-              <Tabs.Root value={activeTab2} onValueChange={setActiveTab2}>
+              <Tabs.Root className={styles.tabsWidth} value={activeTab2} onValueChange={setActiveTab2}>
               <Tabs.List data-variant="segmented" aria-label="Token filters">
                 <Tabs.Tab value="tokens" data-variant="segmented">
                   Tokens

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Progress } from '../../../design-system/base';
 import { DemoCard, DemoFrame } from './DemoFrame';
+import styles from './BaseUIDemos.module.css';
 
 export const ProgressDemo: React.FC = () => {
   const [progressVal, setProgressVal] = useState<number>(68);
@@ -20,7 +21,7 @@ export const ProgressDemo: React.FC = () => {
           <span>Completion</span>
           <span>{progressVal}%</span>
         </div>
-        <Progress.Root value={progressVal} max={100} aria-label="Completion">
+        <Progress.Root className={styles.progressWidth} value={progressVal} max={100} aria-label="Completion">
           <Progress.Track>
             <Progress.Indicator style={{ width: `${progressVal}%` }} />
           </Progress.Track>
@@ -57,7 +58,7 @@ export const ProgressDemo: React.FC = () => {
             {progressVal === 100 ? '✓ Verified' : `${progressVal}%`}
           </span>
         </div>
-        <Progress.Root value={progressVal} max={100} aria-label="Contrast verification">
+        <Progress.Root className={styles.progressWidth} value={progressVal} max={100} aria-label="Contrast verification">
           <Progress.Track>
             <Progress.Indicator style={{ width: `${progressVal}%` }} />
           </Progress.Track>

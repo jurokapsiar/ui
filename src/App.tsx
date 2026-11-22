@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { Sidebar, type AppMode } from './components/Sidebar/Sidebar';
 import { DesignSystemProvider, useDesignSystem } from './design-system/DesignSystemContext';
+import { usePrefersReducedMotion } from './hooks/usePrefersReducedMotion';
 import { BaseUIDesignSystemView } from './components/BaseUIDesignSystem/BaseUIDesignSystemView';
 
 const FluentDesignSystemView = lazy(() =>
@@ -13,11 +14,13 @@ function AppContent() {
   const [mode, setMode] = useState<AppMode>('base-ui');
   const mainRef = useRef<HTMLElement>(null);
   const { selectedComponentId, selectComponent } = useDesignSystem();
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    mainRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [mode, selectedComponentId]);
+    const behavior = reduceMotion ? 'auto' : 'smooth';
+    mainRef.current?.scrollTo({ top: 0, behavior });
+    window.scrollTo({ top: 0, behavior });
+  }, [mode, selectedComponentId, reduceMotion]);
 
   return (
     <div className="min-h-screen flex flex-col min-[901px]:flex-row bg-[var(--bg-canvas)] text-[var(--text-primary)]">

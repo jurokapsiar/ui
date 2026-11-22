@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: { dedupe: ['react', 'react-dom'] },
   build: {
-    outDir: '../../dist/consumer-smoke',
+    outDir: '../../.consumer-smoke',
     emptyOutDir: true,
   },
 });

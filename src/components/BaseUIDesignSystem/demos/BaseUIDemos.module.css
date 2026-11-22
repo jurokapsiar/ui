@@ -133,3 +133,10 @@
     .variantCard { transition: none; }
   }
 }
+
+@layer components.showcase {
+  .tabsWidth { max-width: 460px; }
+  .accordionWidth { max-width: 480px; }
+  .collapsibleWidth { max-width: 440px; }
+  .sliderWidth, .progressWidth { width: 240px; }
+}

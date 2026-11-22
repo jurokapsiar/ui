@@ -10,8 +10,8 @@ import { THEME_PRESETS } from './themeTokens';
 describe('theme presets', () => {
   it('uses Inter for body and display typography in every preset', () => {
     for (const preset of THEME_PRESETS) {
-      expect(preset.tokens.fontFamilyDisplay, `${preset.id} display`).toBe('Inter, sans-serif');
-      expect(preset.tokens.fontFamilyBody, `${preset.id} body`).toBe('Inter, sans-serif');
+      expect(preset.tokens.fontFamilyDisplay, `${preset.id} display`).toBe('InterVariable, Inter, sans-serif');
+      expect(preset.tokens.fontFamilyBody, `${preset.id} body`).toBe('InterVariable, Inter, sans-serif');
     }
   });
 

@@ -43,7 +43,7 @@ export const SliderDemo: React.FC = () => {
           </div>
           <div className={styles.previewArea}>
             <div className="flex flex-col items-center gap-3">
-              <Slider.Root
+              <Slider.Root className={styles.sliderWidth}
                 value={singleVal}
                 onValueChange={setSingleVal}
                 min={0}
@@ -77,7 +77,7 @@ export const SliderDemo: React.FC = () => {
           </div>
           <div className={styles.previewArea}>
             <div className="flex flex-col items-center gap-2">
-              <Slider.Root
+              <Slider.Root className={styles.sliderWidth}
                 value={steppedVal}
                 onValueChange={setSteppedVal}
                 min={0}
@@ -117,7 +117,7 @@ export const SliderDemo: React.FC = () => {
           </div>
           <div className={styles.previewArea}>
             <div className="flex flex-col items-center gap-2">
-              <Slider.Root
+              <Slider.Root className={styles.sliderWidth}
                 value={rangeVal}
                 onValueChange={setRangeVal}
                 min={0}
@@ -149,7 +149,7 @@ export const SliderDemo: React.FC = () => {
             <span className="text-xs font-mono text-[var(--color-neutral-text-muted,#71717a)]">Locked at 50%</span>
           </div>
           <div className={styles.previewArea}>
-            <Slider.Root
+            <Slider.Root className={styles.sliderWidth}
               value={50}
               disabled
               aria-label="Locked level"

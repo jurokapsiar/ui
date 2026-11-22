@@ -58,6 +58,12 @@ function styledTag<C extends keyof React.JSX.IntrinsicElements>(tag: C, baseClas
   return styledPart(tag, baseClassName);
 }
 
+function withButtonType<P extends { type?: string }>(Component: React.ForwardRefExoticComponent<P>) {
+  const Wrapped = React.forwardRef<any, P>((props, ref) => React.createElement(Component, { type: 'button', ...props, ref } as any));
+  Wrapped.displayName = Component.displayName;
+  return Wrapped;
+}
+
 type ButtonProps = React.ComponentPropsWithoutRef<typeof ButtonPrimitive> & {
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
 };
@@ -97,7 +103,11 @@ export const Radio = {
   Root: styledPart(RadioPrimitive.Root, styles.radioRoot),
   Indicator: styledPart(RadioPrimitive.Indicator, styles.radioIndicator),
 };
-export const RadioGroup = styledPart(RadioGroupPrimitive, styles.radioGroupRoot);
+const StyledRadioGroup = styledPart(RadioGroupPrimitive, styles.radioGroupRoot);
+export const RadioGroup = React.forwardRef<React.ComponentRef<typeof StyledRadioGroup>, React.ComponentPropsWithoutRef<typeof StyledRadioGroup>>(
+  (props, ref) => <StyledRadioGroup data-orientation="vertical" {...props} ref={ref} />,
+);
+RadioGroup.displayName = 'RadioGroup';
 
 export const Slider = {
   ...SliderPrimitive,
@@ -129,7 +139,7 @@ export const Tooltip = {
   Provider: TooltipPrimitive.Provider,
   Trigger: styledPart(TooltipPrimitive.Trigger, styles.popoverTrigger),
   Portal: TooltipPrimitive.Portal,
-  Positioner: TooltipPrimitive.Positioner,
+  Positioner: styledPart(TooltipPrimitive.Positioner, styles.positioner),
   Popup: styledPart(TooltipPrimitive.Popup, styles.tooltipPopup),
 };
 
@@ -215,14 +225,14 @@ export const ToggleGroup = styledPart(ToggleGroupPrimitive, styles.chipGroup);
 
 export const List = styledTag('ul', styles.list);
 export const ListItem = styledTag('li', styles.listItem);
-export const ListOption = styledTag('button', styles.listOption);
+export const ListOption = withButtonType(styledTag('button', styles.listOption));
 export const ListLead = styledTag('span', styles.listLead);
 export const ListText = styledTag('span', styles.listText);
 export const ListHeadline = styledTag('span', styles.listHeadline);
 export const ListSupport = styledTag('span', styles.listSupport);
 export const ListMeta = styledTag('span', styles.listMeta);
 export const ChipInput = styledTag('span', styles.chipInput);
-export const ChipRemove = styledTag('button', styles.chipRemove);
+export const ChipRemove = withButtonType(styledTag('button', styles.chipRemove));
 export const ChipCheck = styledTag('span', styles.chipCheck);
 export const CheckboxCard = styledTag('label', styles.checkboxCard);
 export const RadioCard = styledTag('label', styles.radioCard);

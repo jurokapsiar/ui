@@ -43,8 +43,8 @@
   --pastel-rose-fg: #881337;
 
   /* Typography */
-  --font-display: Inter, sans-serif;
-  --font-body: Inter, sans-serif;
+  --font-display: InterVariable, Inter, sans-serif;
+  --font-body: InterVariable, Inter, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, monospace;
 
   /* Transitions */

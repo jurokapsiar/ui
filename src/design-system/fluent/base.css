@@ -83,7 +83,7 @@
     --fluent-radius-button: var(--radius-control, var(--fluent-radius-control));
     --fluent-radius-button-sm: var(--radius-control, var(--fluent-radius-control-sm));
     --fluent-radius-field: var(--radius-field, var(--fluent-radius-control));
-    --fluent-radius-chip: var(--radius-chip, var(--fluent-radius-pill));
+    --fluent-radius-chip: var(--radius-chip, var(--fluent-radius-control));
     --fluent-stroke: var(--border-width, 1px);
 
     /* spacing scale follows the spacing base token */

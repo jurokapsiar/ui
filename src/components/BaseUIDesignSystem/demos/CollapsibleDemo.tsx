@@ -37,7 +37,7 @@ export const CollapsibleDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Collapsible.Root open={open1} onOpenChange={setOpen1}>
+            <Collapsible.Root className={styles.collapsibleWidth} open={open1} onOpenChange={setOpen1}>
               <Collapsible.Trigger>
                 <span>Cascade layer precedence rules</span>
                 <span className="font-mono text-xs text-[var(--ds-brand-ink,#2563eb)]">
@@ -63,7 +63,7 @@ export const CollapsibleDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Collapsible.Root open={open2} onOpenChange={setOpen2}>
+            <Collapsible.Root className={styles.collapsibleWidth} open={open2} onOpenChange={setOpen2}>
               <Collapsible.Trigger>
                 <span className="font-mono text-xs">OKLCH Theme Invariants</span>
                 <span className="font-mono text-xs text-[var(--ds-brand-ink,#2563eb)]">

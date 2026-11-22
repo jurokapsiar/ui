@@ -126,4 +126,4 @@ bun run build
 bun run build:consumer
 ```
 
-`fixtures/consumer` exercises the public entries with a separate Vite configuration and no showcase CSS or Tailwind plugin. Its output is `dist/consumer-smoke/`.
+`fixtures/consumer` exercises the public entries with a separate Vite configuration and no showcase CSS or Tailwind plugin. Its output is `.consumer-smoke/`.

@@ -40,7 +40,7 @@ export const AccordionDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Accordion.Root
+            <Accordion.Root className={styles.accordionWidth}
               aria-label="Exclusive accordion"
               value={singleValue}
               onValueChange={setSingleValue}
@@ -93,7 +93,7 @@ export const AccordionDemo: React.FC = () => {
             </div>
           </div>
           <div className={styles.previewArea}>
-            <Accordion.Root
+            <Accordion.Root className={styles.accordionWidth}
               aria-label="Multi-panel accordion"
               value={multiValue}
               onValueChange={setMultiValue}
